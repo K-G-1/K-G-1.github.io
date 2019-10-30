@@ -160,98 +160,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="commander-cpp"><a href="#commander-cpp" class="headerlink" title="commander.cpp"></a>commander.cpp</h1><hr>
-<pre><code>commander.cpp主要是通过指令改变当前的飞行模式
-&lt;!--more--&gt;
-指令分为：
-* 遥控器的指令
-* 上位机控制台的指令
-* mavlink指令
-
-飞行模式分为
-* manual
-* altctl
-* posctl
-* mission
-* rtl
-* loiter
-* acro
-* offboard
-* stabilized
-* rattitude
-* takeoff
-* land    </code></pre><hr>
-<pre><code>基本流程为订阅数据，处理数据，发布数据</code></pre><ol>
-<li><p>遥控器指令</p>
-<ol>
-<li><p>arm/disarm</p>
-<ol>
-<li><p>上锁逻辑：<br>因为对于上锁解锁这种条件，不需要改动，也不能改动，安全最为重要，所以按照它的逻辑必定是可以上锁解锁。 </p>
-<ol>
-<li><p>首先判断是不是要进入上锁模式，即在已经解锁状态，遥控器油门低且yaw轴摇杆小于0.9×1000</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> /* DISARM</span><br><span class="line"> * check if left stick is in lower left position or arm button is pushed or arm switch has transition from arm to disarm</span><br><span class="line"> * and we are in MANUAL, Rattitude, or AUTO_READY mode or (ASSIST mode and landed)</span><br><span class="line"> * do it only for rotary wings in manual mode or fixed wing if landed */</span><br><span class="line">const bool stick_in_lower_left = sp_man.r &lt; -STICK_ON_OFF_LIMIT &amp;&amp; sp_man.z &lt; 0.1f;</span><br><span class="line">const bool arm_switch_to_disarm_transition =  arm_switch_is_button == 0 &amp;&amp;</span><br><span class="line">        _last_sp_man_arm_switch == manual_control_setpoint_s::SWITCH_POS_ON &amp;&amp;</span><br><span class="line">        sp_man.arm_switch == manual_control_setpoint_s::SWITCH_POS_OFF;</span><br><span class="line">		</span><br><span class="line">if (in_armed_state &amp;&amp;</span><br><span class="line">    status.rc_input_mode != vehicle_status_s::RC_IN_MODE_OFF &amp;&amp;</span><br><span class="line">    (status.is_rotary_wing || (!status.is_rotary_wing &amp;&amp; land_detector.landed)) &amp;&amp;</span><br><span class="line">    (stick_in_lower_left || arm_button_pressed || arm_switch_to_disarm_transition) ) &#123;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再判断是不是手动的模式（<code>MAIN_STATE_MANUAL，MAIN_STATE_ACRO，MAIN_STATE_STAB,MAIN_STATE_RATTITUDE</code>）且不是正在降落</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (internal_state.main_state != commander_state_s::MAIN_STATE_MANUAL &amp;&amp;</span><br><span class="line">                                         internal_state.main_state != commander_state_s::MAIN_STATE_ACRO &amp;&amp;</span><br><span class="line">                                         internal_state.main_state != commander_state_s::MAIN_STATE_STAB &amp;&amp;</span><br><span class="line">                                         internal_state.main_state != commander_state_s::MAIN_STATE_RATTITUDE &amp;&amp;</span><br><span class="line">                                         !land_detector.landed) &#123;</span><br><span class="line">                                     print_reject_arm(&quot;NOT DISARMING: Not in manual mode or landed yet.&quot;);</span><br><span class="line">		</span><br><span class="line">                                 &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不满足上面条件的话 ，就上锁</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">arming_ret = arming_state_transition(&amp;status,</span><br><span class="line">                                     &amp;battery,</span><br><span class="line">                                     &amp;safety,</span><br><span class="line">                                     new_arming_state,</span><br><span class="line">                                     &amp;armed,</span><br><span class="line">                                     true /* fRunPreArmChecks */,</span><br><span class="line">                                     &amp;mavlink_log_pub,</span><br><span class="line">                                     &amp;status_flags,</span><br><span class="line">                                     avionics_power_rail_voltage,</span><br><span class="line">                                     arm_requirements,</span><br><span class="line">                                     hrt_elapsed_time(&amp;commander_boot_timestamp));</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-<ol start="2">
-<li><p>解锁</p>
-<p>逻辑大致与上锁相同，只是摇杆yaw轴要大于0.9*1000</p>
-</li>
-</ol>
-</li>
-<li><p>模式切换</p>
-<p>只有在遥控器（rc）有输入的时候才能切换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (!status_flags.rc_input_blocked &amp;&amp; sp_man.timestamp != 0 &amp;&amp;</span><br><span class="line">  (hrt_absolute_time() &lt; sp_man.timestamp + (uint64_t)(rc_loss_timeout * 1e6f))) &#123;</span><br></pre></td></tr></table></figure>
-
-<p>主要函数<code>main_res = set_main_state(&amp;status, &amp;global_position, &amp;local_position, &amp;status_changed)</code><br><br>主要输入飞行器状态，位置信息，internal_state<br><br>返回<code>TRANSITION_CHANGED</code>/<code>TRANSITION_NOT_CHANGED</code>与<code>internal_state-&gt;main_state</code>.</p>
-</li>
-</ol>
-</li>
-<li><p>控制台指令</p>
-<p> 分为两种情况：直接切换模式，发送cmd指令切换数据</p>
-<p> 直接切换数据，就只能切换模式。（所有的模式都能直接切换）<br> 发送cmd切换数据，不仅能切换模式，还能在切换模式之后发送固定数据。（只有三种模式可以这么切换，takeoff，land，transition，且必须要有位置数据）</p>
-<ol>
-<li><p>直接切换模式</p>
-<p> 在控制台发送<code>commander mode auto：(misison)</code>进入<code>TRANSITION_DENIED == main_state_transition(&amp;status, new_main_state, main_state_prev,  &amp;status_flags, &amp;internal_state)</code></p>
-</li>
-<li><p>发送cmd指令切换数据</p>
-<ol>
-<li><p>在控制台输入<code>commander takeoff</code> <code>commander land</code>，它数据都已经写好了，所以要想改变数据的话，就要改动代码</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/* see if we got a home position */</span><br><span class="line">    if (status_flags.condition_local_position_valid) &#123;</span><br><span class="line">	</span><br><span class="line">        if (TRANSITION_DENIED != arm_disarm(true, &amp;mavlink_log_pub, &quot;command line&quot;)) &#123;</span><br><span class="line">	</span><br><span class="line">            struct vehicle_command_s cmd = &#123;</span><br><span class="line">                .timestamp = hrt_absolute_time(),</span><br><span class="line">                .param5 = NAN,</span><br><span class="line">                .param6 = NAN,</span><br><span class="line">                /* minimum pitch */</span><br><span class="line">                .param1 = NAN,</span><br><span class="line">                .param2 = NAN,</span><br><span class="line">                .param3 = NAN,</span><br><span class="line">                .param4 = NAN,</span><br><span class="line">                .param7 = NAN,</span><br><span class="line">                .command = vehicle_command_s::VEHICLE_CMD_NAV_TAKEOFF,</span><br><span class="line">                .target_system = status.system_id,</span><br><span class="line">                .target_component = status.component_id</span><br><span class="line">            &#125;;</span><br><span class="line">	</span><br><span class="line">            orb_advert_t h = orb_advertise_queue(ORB_ID(vehicle_command), &amp;cmd, vehicle_command_s::ORB_QUEUE_LENGTH);</span><br><span class="line">            (void)orb_unadvertise(h);</span><br><span class="line">	</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            warnx(&quot;arming failed&quot;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>  <code>orb_advertise_queue(ORB_ID(vehicle_command), &amp;cmd, vehicle_command_s::ORB_QUEUE_LENGTH)</code>这句话将cmd topic发送出去</p>
-<ol start="2">
-<li><p>在<code>while</code>中处理cmd消息<br><code>cmd</code>topic更新的话会进入<code>handle_command()</code>函数<br>主要输入<code>status</code> <code>cmd</code></p>
-<p>判断cmd的模式然后进入<code>main_state_transition(&amp;status, new_main_state, main_state_prev,  &amp;status_flags, &amp;internal_state)</code><br>切换模式</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>改变飞行模式</p>
-<ol>
-<li><p>主要函数<code>set_nav_state()</code>    </p>
-<p> 输入:通过之前设置的<code>internal_state-&gt;main_state</code>与相应的条件，来确定飞行器到底能不能改变模式<br> 输出：status-&gt;nav_state<br> 例如：position_ctrl只需要rc连接，解锁，有位置信息</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> case commander_state_s::MAIN_STATE_POSCTL: &#123;</span><br><span class="line"></span><br><span class="line">    if (rc_lost &amp;&amp; is_armed) &#123;</span><br><span class="line">        enable_failsafe(status, old_failsafe, mavlink_log_pub, reason_no_rc);</span><br><span class="line"></span><br><span class="line">        set_rc_loss_nav_state(status, armed, status_flags, internal_state, rc_loss_act);</span><br><span class="line"></span><br><span class="line">        /* As long as there is RC, we can fallback to ALTCTL, or STAB. */</span><br><span class="line">        /* A local position estimate is enough for POSCTL for multirotors,</span><br><span class="line">         * this enables POSCTL using e.g. flow.</span><br><span class="line">         * For fixedwing, a global position is needed. */</span><br><span class="line"></span><br><span class="line">    &#125; else if (is_armed &amp;&amp; check_invalid_pos_nav_state(status, old_failsafe, mavlink_log_pub, status_flags, !(posctl_nav_loss_act == 1), !status-&gt;is_rotary_wing)) &#123;</span><br><span class="line">        // nothing to do - everything done in check_invalid_pos_nav_state</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        status-&gt;nav_state = vehicle_status_s::NAVIGATION_STATE_POSCTL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">break;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>set_control_mode()</code></p>
-<p> 根据之前的<code>status.nav_state</code>来设置control_mode。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">switch (status.nav_state) &#123;</span><br><span class="line">case vehicle_status_s::NAVIGATION_STATE_MANUAL:</span><br><span class="line">	control_mode.flag_control_manual_enabled = true;</span><br><span class="line">	control_mode.flag_control_auto_enabled = false;</span><br><span class="line">	control_mode.flag_control_rates_enabled = stabilization_required();</span><br><span class="line">	control_mode.flag_control_attitude_enabled = stabilization_required();</span><br><span class="line">	control_mode.flag_control_rattitude_enabled = false;</span><br><span class="line">	control_mode.flag_control_altitude_enabled = false;</span><br><span class="line">	control_mode.flag_control_climb_rate_enabled = false;</span><br><span class="line">	control_mode.flag_control_position_enabled = false;</span><br><span class="line">	control_mode.flag_control_velocity_enabled = false;</span><br><span class="line">	control_mode.flag_control_acceleration_enabled = false;</span><br><span class="line">	control_mode.flag_control_termination_enabled = false;</span><br><span class="line">	break;</span><br><span class="line">	</span><br><span class="line">case vehicle_status_s::NAVIGATION_STATE_STAB:</span><br><span class="line">	control_mode.flag_control_manual_enabled = true;</span><br><span class="line">	control_mode.flag_control_auto_enabled = false;</span><br><span class="line">	control_mode.flag_control_rates_enabled = true;</span><br><span class="line">	control_mode.flag_control_attitude_enabled = true;</span><br><span class="line">	control_mode.flag_control_rattitude_enabled = false;</span><br><span class="line">	control_mode.flag_control_altitude_enabled = false;</span><br><span class="line">	control_mode.flag_control_climb_rate_enabled = false;</span><br><span class="line">	control_mode.flag_control_position_enabled = false;</span><br><span class="line">	control_mode.flag_control_velocity_enabled = false;</span><br><span class="line">	control_mode.flag_control_acceleration_enabled = false;</span><br><span class="line">	control_mode.flag_control_termination_enabled = false;</span><br><span class="line">	/* override is not ok in stabilized mode */</span><br><span class="line">	control_mode.flag_external_manual_override_ok = false;</span><br><span class="line">	break;</span><br><span class="line">	...</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>公布数据</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">control_mode.timestamp = now;</span><br><span class="line">orb_publish(ORB_ID(vehicle_control_mode), control_mode_pub, &amp;control_mode);</span><br><span class="line"></span><br><span class="line">status.timestamp = now;</span><br><span class="line">orb_publish(ORB_ID(vehicle_status), status_pub, &amp;status);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+<pre><code>commander.cpp主要是通过指令改变当前的飞行模式</code></pre>
+        
+          <a class="article-more-a" href="/2019/10/30/pixhawk-commander%E5%88%86%E6%9E%90/#more">more >></a>
+        
       
 
       
@@ -815,11 +727,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">commander文件</a>
+                <a href="javascript:void(0)" class="js-tag color4">模拟器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">模拟器</a>
+                <a href="javascript:void(0)" class="js-tag color2">commander文件</a>
               </li>
              
               <li class="article-tag-list-item">
