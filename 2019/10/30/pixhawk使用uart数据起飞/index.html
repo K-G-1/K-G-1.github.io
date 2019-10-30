@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: pixhawk | KG&#39;s blog</title>
+  <title>pixhawk使用uart数据起飞 | KG&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="求知">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KG&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;pixhawk&#x2F;index.html">
+  <meta name="description" content="使用uart得到的位置信息进行起飞 在得到了位置信息的前提下，我们开始进行模拟起飞，即使用usb供电，人工控制其高度，在上位机查看油门大小，电机的pwm输出。  commander.cpp在commander.cpp中，主要是判断能不能切换到takeoff模式，并且设置一些标志位，为takeoff做准备  navigator_main.cpp在navigator中，只要是通过run()重载，来确定">
+<meta name="keywords" content="pixhawk,ubuntu,qgc,uart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pixhawk使用uart数据起飞">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;pixhawk%E4%BD%BF%E7%94%A8uart%E6%95%B0%E6%8D%AE%E8%B5%B7%E9%A3%9E&#x2F;index.html">
 <meta property="og:site_name" content="KG&#39;s blog">
-<meta property="og:description" content="求知">
+<meta property="og:description" content="使用uart得到的位置信息进行起飞 在得到了位置信息的前提下，我们开始进行模拟起飞，即使用usb供电，人工控制其高度，在上位机查看油门大小，电机的pwm输出。  commander.cpp在commander.cpp中，主要是判断能不能切换到takeoff模式，并且设置一些标志位，为takeoff做准备  navigator_main.cpp在navigator中，只要是通过run()重载，来确定">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-10-30T04:32:41.367Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="KG&#39;s blog" type="application/atom+xml">
@@ -151,128 +153,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-pixhawk使用uart数据起飞" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/30/pixhawk-commander%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-10-30T04:35:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/30/pixhawk-commander%E5%88%86%E6%9E%90/">pixhawk commander分析</a>
+    <h1 class="article-title" itemprop="name">
+      pixhawk使用uart数据起飞
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pixhawk</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">commander文件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/30/pixhawk-%E6%A8%A1%E6%8B%9F%E9%A3%9E%E8%A1%8C/" class="archive-article-date">
-  	<time datetime="2019-10-30T04:33:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/30/pixhawk-%E6%A8%A1%E6%8B%9F%E9%A3%9E%E8%A1%8C/">pixhawk 模拟飞行</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pixhawk</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">模拟器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/30/pixhawk%E4%BD%BF%E7%94%A8uart%E6%95%B0%E6%8D%AE%E8%B5%B7%E9%A3%9E/" class="archive-article-date">
+        
+        <a href="/2019/10/30/pixhawk%E4%BD%BF%E7%94%A8uart%E6%95%B0%E6%8D%AE%E8%B5%B7%E9%A3%9E/" class="archive-article-date">
   	<time datetime="2019-10-30T04:31:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/30/pixhawk%E4%BD%BF%E7%94%A8uart%E6%95%B0%E6%8D%AE%E8%B5%B7%E9%A3%9E/">pixhawk使用uart数据起飞</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用uart得到的位置信息进行起飞"><a href="#使用uart得到的位置信息进行起飞" class="headerlink" title="使用uart得到的位置信息进行起飞"></a>使用uart得到的位置信息进行起飞</h1><hr>
+<p>在得到了<strong>位置信息</strong>的前提下，我们开始进行模拟起飞，即使用usb供电，人工控制其高度，在上位机查看油门大小，电机的pwm输出。</p>
+<ol>
+<li><p>commander.cpp<br>在commander.cpp中，主要是判断能不能切换到takeoff模式，并且设置一些标志位，为takeoff做准备</p>
+</li>
+<li><p>navigator_main.cpp<br>在navigator中，只要是通过<code>run()</code>重载，来确定使用的函数，takeoff模式下当然是进入takeoff.cpp。  </p>
+<ol>
+<li>在navigator_main.cpp中有设置takeoff triplet<br>这里面主要是设置了<strong>rep-&gt;current</strong> ,为takeoff.cpp准备<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">position_setpoint_triplet_s *rep = get_takeoff_triplet();</span><br><span class="line"></span><br><span class="line">   // store current position as previous position and goal as next</span><br><span class="line">   rep-&gt;previous.yaw = get_global_position()-&gt;yaw;</span><br><span class="line">   rep-&gt;previous.lat = get_global_position()-&gt;lat;</span><br><span class="line">   rep-&gt;previous.lon = get_global_position()-&gt;lon;</span><br><span class="line">   rep-&gt;previous.alt = get_global_position()-&gt;alt;</span><br><span class="line"></span><br><span class="line">   rep-&gt;current.loiter_radius = get_loiter_radius();</span><br><span class="line">   rep-&gt;current.loiter_direction = 1;</span><br><span class="line">   rep-&gt;current.type = position_setpoint_s::SETPOINT_TYPE_TAKEOFF;</span><br><span class="line"></span><br><span class="line">   if (home_position_valid()) &#123;</span><br><span class="line">       rep-&gt;current.yaw = cmd.param4;</span><br><span class="line">       rep-&gt;previous.valid = true;</span><br><span class="line"></span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       rep-&gt;current.yaw = get_local_position()-&gt;yaw;</span><br><span class="line">       rep-&gt;previous.valid = false;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   if (PX4_ISFINITE(cmd.param5) &amp;&amp; PX4_ISFINITE(cmd.param6)) &#123;</span><br><span class="line">       rep-&gt;current.lat = (cmd.param5 &lt; 1000) ? cmd.param5 : cmd.param5 / (double)1e7;</span><br><span class="line">       rep-&gt;current.lon = (cmd.param6 &lt; 1000) ? cmd.param6 : cmd.param6 / (double)1e7;</span><br><span class="line"></span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       // If one of them is non-finite, reset both</span><br><span class="line">       rep-&gt;current.lat = NAN;</span><br><span class="line">       rep-&gt;current.lon = NAN;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   rep-&gt;current.alt = cmd.param7;</span><br><span class="line"></span><br><span class="line">   rep-&gt;current.valid = true;</span><br><span class="line">   rep-&gt;next.valid = false;</span><br></pre></td></tr></table></figure></li>
+<li>takeoff.cpp<br>在<code>on_activation()</code>设置高度数据<code>abs_altitude</code>，并且需要设置坐标经纬度的数据，由于不使用gps，所以没有经纬度的数据，这里我们将lpe输出的xy数据赋值给经纬度的变量<br><br><code>set_takeoff_item(&amp;_mission_item, abs_altitude)</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> item-&gt;lat = _navigator-&gt;get_local_position()-&gt;x;</span><br><span class="line">item-&gt;lon = _navigator-&gt;get_local_position()-&gt;y;</span><br></pre></td></tr></table></figure>
+将经纬度的变量赋值给位置期望<br><code>mission_item_to_position_setpoint(_mission_item, &amp;pos_sp_triplet-&gt;current)</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">	sp-&gt;lat = item.lat;</span><br><span class="line">	sp-&gt;lon = item.lon;</span><br><span class="line"></span><br><span class="line">	sp-&gt;alt = item.altitude_is_relative ? item.altitude + _navigator-&gt;get_home_position()-&gt;alt : item.altitude;</span><br><span class="line">	sp-&gt;yaw = item.yaw;</span><br><span class="line">	sp-&gt;yaw_valid = PX4_ISFINITE(item.yaw);</span><br><span class="line">	sp-&gt;loiter_radius = (fabsf(item.loiter_radius) &gt; NAV_EPSILON_POSITION) ? fabsf(item.loiter_radius) :</span><br><span class="line">			    _navigator-&gt;get_loiter_radius();</span><br><span class="line">	sp-&gt;loiter_direction = (item.loiter_radius &gt; 0) ? 1 : -1;</span><br><span class="line">	sp-&gt;acceptance_radius = item.acceptance_radius;</span><br><span class="line"></span><br><span class="line">	sp-&gt;cruising_speed = _navigator-&gt;get_cruising_speed();</span><br><span class="line">	sp-&gt;cruising_throttle = _navigator-&gt;get_cruising_throttle();</span><br><span class="line">switch (item.nav_cmd) &#123;</span><br><span class="line">case NAV_CMD_TAKEOFF:</span><br><span class="line"></span><br><span class="line">		// if already flying (armed and !landed) treat TAKEOFF like regular POSITION</span><br><span class="line">		if ((_navigator-&gt;get_vstatus()-&gt;arming_state == vehicle_status_s::ARMING_STATE_ARMED)</span><br><span class="line">		    &amp;&amp; !_navigator-&gt;get_land_detected()-&gt;landed) &#123;</span><br><span class="line"></span><br><span class="line">			sp-&gt;type = position_setpoint_s::SETPOINT_TYPE_POSITION;</span><br><span class="line"></span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			sp-&gt;type = position_setpoint_s::SETPOINT_TYPE_TAKEOFF;</span><br><span class="line"></span><br><span class="line">			// set pitch and ensure that the hold time is zero</span><br><span class="line">			sp-&gt;pitch_min = item.pitch_min;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		break;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	sp-&gt;valid = true;</span><br><span class="line"></span><br><span class="line">	return sp-&gt;valid;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>position_control.cpp</p>
+<p>因为takeoff原本使用的是gps的数据，在位置控制的时候，px4将其进行坐标转化，转化为机体坐标系的数据，在navigator中我们使用的就是机体坐标系的xy数据，所以不需要进行坐标系的转化。<br>坐标系转化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  //only project setpoints if they are finite, else use current position</span><br><span class="line">if (PX4_ISFINITE(_pos_sp_triplet.current.lat) &amp;&amp;</span><br><span class="line">    PX4_ISFINITE(_pos_sp_triplet.current.lon)) &#123;</span><br><span class="line">	/* project setpoint to local frame */</span><br><span class="line">	map_projection_project(&amp;_ref_pos,</span><br><span class="line">			       _pos_sp_triplet.current.lat, _pos_sp_triplet.current.lon,</span><br><span class="line">			       &amp;curr_pos_sp.data[0], &amp;curr_pos_sp.data[1]);</span><br><span class="line"></span><br><span class="line">	_triplet_lat_lon_finite = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  //only project setpoints if they are finite, else use current position</span><br><span class="line">if (PX4_ISFINITE(_pos_sp_triplet.current.x) &amp;&amp;</span><br><span class="line">    PX4_ISFINITE(_pos_sp_triplet.current.y)) &#123;</span><br><span class="line">	/* project setpoint to local frame */</span><br><span class="line">	curr_pos_sp(0) = _pos_sp_triplet.current.x;</span><br><span class="line">	curr_pos_sp(1) = _pos_sp_triplet.current.y;</span><br><span class="line"></span><br><span class="line">	_triplet_lat_lon_finite = true;</span><br><span class="line">&#125;else if (PX4_ISFINITE(_pos_sp_triplet.current.lat) &amp;&amp;</span><br><span class="line">	    PX4_ISFINITE(_pos_sp_triplet.current.lon)) &#123;</span><br><span class="line">		/* project setpoint to local frame */</span><br><span class="line">		map_projection_project(&amp;_ref_pos,</span><br><span class="line">				       _pos_sp_triplet.current.lat, _pos_sp_triplet.current.lon,</span><br><span class="line">				       &amp;curr_pos_sp.data[0], &amp;curr_pos_sp.data[1]);</span><br><span class="line"></span><br><span class="line">		_triplet_lat_lon_finite = true;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模拟飞行<br> 解锁之后应该能看到油门数据突变，变为油门悬停值，当你升高飞行器至起飞高度后，模式切换为loier <strong>（待添加图片）</strong></p>
+</li>
+<li><p>起飞之后</p>
+<p>起飞之后在on_active()函数中会判断是不是到达了起飞点<code>is_mission_item_reached()</code></p>
+<p>它的思路是先判断有没有到达起飞高度或者任务点，在判断yaw有没有到，最后判断是不是在航线里。<br>因为使用的是takeoff模式，所以先判断有没有到达起飞高度，也只需要修改起飞高度，yaw会以当前的yaw为期望，起飞之后yaw一定是满足err的，航线与takeoff模式无关。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">if ((_mission_item.nav_cmd == NAV_CMD_TAKEOFF || _mission_item.nav_cmd == NAV_CMD_VTOL_TAKEOFF)</span><br><span class="line">   &amp;&amp; _navigator-&gt;get_vstatus()-&gt;is_rotary_wing) &#123;</span><br><span class="line"></span><br><span class="line">/* We want to avoid the edge case where the acceptance radius is bigger or equal than</span><br><span class="line"> * the altitude of the takeoff waypoint above home. Otherwise, we do not really follow</span><br><span class="line"> * take-off procedures like leaving the landing gear down. */</span><br><span class="line"></span><br><span class="line">float takeoff_alt = _mission_item.altitude_is_relative ?</span><br><span class="line">		    _mission_item.altitude :</span><br><span class="line">		    (_mission_item.altitude - _navigator-&gt;get_home_position()-&gt;alt);</span><br><span class="line"></span><br><span class="line">float altitude_acceptance_radius = _navigator-&gt;get_altitude_acceptance_radius();</span><br><span class="line"></span><br><span class="line">/* It should be safe to just use half of the takoeff_alt as an acceptance radius. */</span><br><span class="line">if (takeoff_alt &gt; 0 &amp;&amp; takeoff_alt &lt; altitude_acceptance_radius) &#123;</span><br><span class="line">	altitude_acceptance_radius = takeoff_alt / 2.0f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* require only altitude for takeoff for multicopter */</span><br><span class="line">if(_navigator-&gt;home_position_valid())&#123;</span><br><span class="line">	if (_navigator-&gt;get_global_position()-&gt;alt &gt;</span><br><span class="line">    	altitude_amsl - altitude_acceptance_radius) &#123;</span><br><span class="line">		_waypoint_position_reached = true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">	if(- _navigator-&gt;get_local_position()-&gt;z &gt; altitude_amsl -0.2f)&#123;</span><br><span class="line">		_waypoint_position_reached = true ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，模式是takeoff且是四旋翼的时候才会进入这个if语句里，在最后我用<code>home_position_valid</code>来判断是不是使用的gps，不是的话，我就判断当前的高度与期望的高度差，满足阈值的话，就认为到达了高度</p>
+</li>
+<li><p>takeoff之后</p>
+<p>takeoff完成了之后，飞行器会切换到loiter模式，但是我们使用的是uart的数据，没有gps，所以我们必须进行修改，一： 到达高度之后切换模式为position。二：修改loiter的数据</p>
+<p>我选择修改loiter的使用数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    void</span><br><span class="line">MissionBlock::set_loiter_item(struct mission_item_s *item, float min_clearance)</span><br><span class="line">&#123;</span><br><span class="line">    if (_navigator-&gt;get_land_detected()-&gt;landed) &#123;</span><br><span class="line">        /* landed, don&apos;t takeoff, but switch to IDLE mode */</span><br><span class="line">        item-&gt;nav_cmd = NAV_CMD_IDLE;</span><br><span class="line"></span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        item-&gt;nav_cmd = NAV_CMD_LOITER_UNLIMITED;</span><br><span class="line"></span><br><span class="line">        struct position_setpoint_triplet_s *pos_sp_triplet = _navigator-&gt;get_position_setpoint_triplet();</span><br><span class="line">        if(_navigator-&gt;home_position_valid())&#123;</span><br><span class="line">            if (_navigator-&gt;get_can_loiter_at_sp() &amp;&amp; pos_sp_triplet-&gt;current.valid) &#123;</span><br><span class="line">                /* use current position setpoint */</span><br><span class="line">                item-&gt;lat = pos_sp_triplet-&gt;current.lat;</span><br><span class="line">                item-&gt;lon = pos_sp_triplet-&gt;current.lon;</span><br><span class="line">                item-&gt;altitude = pos_sp_triplet-&gt;current.alt;</span><br><span class="line"></span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                /* use current position and use return altitude as clearance */</span><br><span class="line">                item-&gt;lat = _navigator-&gt;get_global_position()-&gt;lat;</span><br><span class="line">                item-&gt;lon = _navigator-&gt;get_global_position()-&gt;lon;</span><br><span class="line">                item-&gt;altitude = _navigator-&gt;get_global_position()-&gt;alt;</span><br><span class="line"></span><br><span class="line">                if (min_clearance &gt; 0.0f &amp;&amp; item-&gt;altitude &lt; _navigator-&gt;get_home_position()-&gt;alt + min_clearance) &#123;</span><br><span class="line">                    item-&gt;altitude = _navigator-&gt;get_home_position()-&gt;alt + min_clearance;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            if (_navigator-&gt;get_can_loiter_at_sp() &amp;&amp; pos_sp_triplet-&gt;current.valid) &#123;</span><br><span class="line">                /* use current position setpoint */</span><br><span class="line">                item-&gt;x = pos_sp_triplet-&gt;current.x;</span><br><span class="line">                item-&gt;y = pos_sp_triplet-&gt;current.y;</span><br><span class="line">                item-&gt;altitude = pos_sp_triplet-&gt;current.alt;</span><br><span class="line"></span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                /* use current position and use return altitude as clearance */</span><br><span class="line">                item-&gt;x = _navigator-&gt;get_local_position()-&gt;x;</span><br><span class="line">                item-&gt;y = _navigator-&gt;get_local_position()-&gt;y;</span><br><span class="line">                item-&gt;altitude = -_navigator-&gt;get_local_position()-&gt;z;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        item-&gt;altitude_is_relative = false;</span><br><span class="line">        item-&gt;yaw = NAN;</span><br><span class="line">        item-&gt;loiter_radius = _navigator-&gt;get_loiter_radius();</span><br><span class="line">        item-&gt;acceptance_radius = _navigator-&gt;get_acceptance_radius();</span><br><span class="line">        item-&gt;time_inside = 0.0f;</span><br><span class="line">        item-&gt;autocontinue = false;</span><br><span class="line">        item-&gt;origin = ORIGIN_ONBOARD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -296,107 +257,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/30/pixhawk%E4%BD%BF%E7%94%A8uart%E6%95%B0%E6%8D%AE%E8%B5%B7%E9%A3%9E/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/30/pixhawk-%E8%87%AA%E5%AE%9A%E4%B9%89uart%E7%9A%84%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2019-10-30T04:27:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/10/30/pixhawk-%E6%A8%A1%E6%8B%9F%E9%A3%9E%E8%A1%8C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          pixhawk 模拟飞行
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/30/pixhawk-%E8%87%AA%E5%AE%9A%E4%B9%89uart%E7%9A%84%E5%BA%94%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pixhawk 自定义uart的应用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/30/pixhawk-%E8%87%AA%E5%AE%9A%E4%B9%89uart%E7%9A%84%E5%BA%94%E7%94%A8/">pixhawk 自定义uart的应用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pixhawk</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">qgc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/29/pixhawk%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2019-10-29T06:47:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/29/pixhawk%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%94%E7%94%A8/">pixhawk自定义应用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pixhawk</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu16.04</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -419,9 +388,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
