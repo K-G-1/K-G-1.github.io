@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pixhawk自定义应用 | KG&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自定义应用 工具 qgroundcontrol ubuntu##例程 px4_simple_apppx4官方代码已经给出了一个例程进入Firmware&#x2F;cmake&#x2F;configs你可以看到px4的cmake配置，我们打开nuttx_px4fmu-v2_default.cmake文件。有许多被’#’注释的内容，我们拉到最下方，可以看到 examples&#x2F;px4_simple_app    取消注释，">
+  <meta name="description" content="自定义应用 工具 qgroundcontrol ubuntu">
 <meta name="keywords" content="pixhawk,ubuntu16.04">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pixhawk自定义应用">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;29&#x2F;pixhawk%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%94%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="KG&#39;s blog">
-<meta property="og:description" content="自定义应用 工具 qgroundcontrol ubuntu##例程 px4_simple_apppx4官方代码已经给出了一个例程进入Firmware&#x2F;cmake&#x2F;configs你可以看到px4的cmake配置，我们打开nuttx_px4fmu-v2_default.cmake文件。有许多被’#’注释的内容，我们拉到最下方，可以看到 examples&#x2F;px4_simple_app    取消注释，">
+<meta property="og:description" content="自定义应用 工具 qgroundcontrol ubuntu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-10-29T07:01:33.661Z">
+<meta property="og:updated_time" content="2019-10-30T04:40:48.755Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="KG&#39;s blog" type="application/atom+xml">
@@ -174,13 +174,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="自定义应用"><a href="#自定义应用" class="headerlink" title="自定义应用"></a>自定义应用</h1><ul>
-<li>工具 qgroundcontrol ubuntu<br>##例程 px4_simple_app<br>px4官方代码已经给出了一个例程<br><br>进入Firmware/cmake/configs<br><br>你可以看到px4的cmake配置，我们打开nuttx_px4fmu-v2_default.cmake文件。<br>有许多被’#’注释的内容，我们拉到最下方，可以看到<blockquote>
+<li>工具 qgroundcontrol ubuntu <a id="more"></a>
+<h2 id="例程-px4-simple-app"><a href="#例程-px4-simple-app" class="headerlink" title="例程 px4_simple_app"></a>例程 px4_simple_app</h2>px4官方代码已经给出了一个例程<br><br>进入Firmware/cmake/configs<br><br>你可以看到px4的cmake配置，我们打开nuttx_px4fmu-v2_default.cmake文件。<br>有许多被’#’注释的内容，我们拉到最下方，可以看到<blockquote>
 <p>examples/px4_simple_app</p>
 </blockquote>
 </li>
 </ul>
 <p>取消注释，之后编译下载到px4中，使用qgc连接飞控，在控制台console ，键入px4_simple_app，就可以看到当前的3轴加速度数据。</p>
-<a id="more"></a>
 <h2 id="自定义数据"><a href="#自定义数据" class="headerlink" title="自定义数据"></a>自定义数据</h2><p>自定义数据显示的话，就需要改动它的数据来源，最后的显示部分不需要改动。<br><strong>px4使用uorb进行数据的交互</strong></p>
 <ol>
 <li><p>公告主题</p>
