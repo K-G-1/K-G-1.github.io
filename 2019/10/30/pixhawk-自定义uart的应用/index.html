@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pixhawk 自定义uart的应用 | KG&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="pixhawk + uart串口 新建一个uart.msg文件 新建一个文件读取串口的数据 使其在程序中传递串口数据，并进行运算">
+  <meta name="description" content="pixhawk + uart&amp;#x4E32;&amp;#x53E3; &amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;uart.msg&amp;#x6587;&amp;#x4EF6; &amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;&amp;#x6587;&amp;#x4EF6;&amp;#x8BFB;&amp;#x53D6;&amp;#x4E32;&amp;#x53E3;&amp;#x7684;&amp;#x6570;&amp;#x636E; &amp;#x4F7">
 <meta name="keywords" content="pixhawk,ubuntu,qgc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pixhawk 自定义uart的应用">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;pixhawk-%E8%87%AA%E5%AE%9A%E4%B9%89uart%E7%9A%84%E5%BA%94%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="KG&#39;s blog">
-<meta property="og:description" content="pixhawk + uart串口 新建一个uart.msg文件 新建一个文件读取串口的数据 使其在程序中传递串口数据，并进行运算">
+<meta property="og:description" content="pixhawk + uart&amp;#x4E32;&amp;#x53E3; &amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;uart.msg&amp;#x6587;&amp;#x4EF6; &amp;#x65B0;&amp;#x5EFA;&amp;#x4E00;&amp;#x4E2A;&amp;#x6587;&amp;#x4EF6;&amp;#x8BFB;&amp;#x53D6;&amp;#x4E32;&amp;#x53E3;&amp;#x7684;&amp;#x6570;&amp;#x636E; &amp;#x4F7">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;imgconvert.csdnimg.cn&#x2F;aHR0cHM6Ly9pbWctYmxvZy5jc2RuLm5ldC8yMDE4MDMxOTE5NDkwNTgwMz93YXRlcm1hcmsvMi90ZXh0L0x5OWliRzluTG1OelpHNHVibVYwTDB0MWNuVnRhVjluZFhscC9mb250LzVhNkw1TDJUL2ZvbnRzaXplLzQwMC9maWxsL0kwSkJRa0ZDTUE9PS9kaXNzb2x2ZS83MA?x-oss-process=image&#x2F;format,png">
 <meta property="og:image" content="https:&#x2F;&#x2F;imgconvert.csdnimg.cn&#x2F;aHR0cHM6Ly9pbWctYmxvZy5jc2RuLm5ldC8yMDE4MDMxOTE5NTEwNTU1MT93YXRlcm1hcmsvMi90ZXh0L0x5OWliRzluTG1OelpHNHVibVYwTDB0MWNuVnRhVjluZFhscC9mb250LzVhNkw1TDJUL2ZvbnRzaXplLzQwMC9maWxsL0kwSkJRa0ZDTUE9PS9kaXNzb2x2ZS83MA?x-oss-process=image&#x2F;format,png">
@@ -169,77 +169,77 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="pixhawk-uart串口"><a href="#pixhawk-uart串口" class="headerlink" title="pixhawk + uart串口"></a>pixhawk + uart串口</h1><ul>
-<li>新建一个uart.msg文件</li>
-<li>新建一个文件读取串口的数据</li>
-<li>使其在程序中传递串口数据，并进行运算</li>
+<h1 id="pixhawk-uart&#x4E32;&#x53E3;"><a href="#pixhawk-uart&#x4E32;&#x53E3;" class="headerlink" title="pixhawk + uart&#x4E32;&#x53E3;"></a>pixhawk + uart&#x4E32;&#x53E3;</h1><ul>
+<li>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;uart.msg&#x6587;&#x4EF6;</li>
+<li>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x4E32;&#x53E3;&#x7684;&#x6570;&#x636E;</li>
+<li>&#x4F7F;&#x5176;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F20;&#x9012;&#x4E32;&#x53E3;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;</li>
 </ul>
 <a id="more"></a>
 <hr>
-<h2 id="读取串口数据（坐标信息）"><a href="#读取串口数据（坐标信息）" class="headerlink" title="读取串口数据（坐标信息）"></a>读取串口数据（坐标信息）</h2><ol>
-<li><p>准备工作</p>
+<h2 id="&#x8BFB;&#x53D6;&#x4E32;&#x53E3;&#x6570;&#x636E;&#xFF08;&#x5750;&#x6807;&#x4FE1;&#x606F;&#xFF09;"><a href="#&#x8BFB;&#x53D6;&#x4E32;&#x53E3;&#x6570;&#x636E;&#xFF08;&#x5750;&#x6807;&#x4FE1;&#x606F;&#xFF09;" class="headerlink" title="&#x8BFB;&#x53D6;&#x4E32;&#x53E3;&#x6570;&#x636E;&#xFF08;&#x5750;&#x6807;&#x4FE1;&#x606F;&#xFF09;"></a>&#x8BFB;&#x53D6;&#x4E32;&#x53E3;&#x6570;&#x636E;&#xFF08;&#x5750;&#x6807;&#x4FE1;&#x606F;&#xFF09;</h2><ol>
+<li><p>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</p>
 <ol>
-<li><p>准备一个uart设备，能够发送数据。这里我使用32开发板作为载体，向px4发送坐标信息，发送的数据格式为 <strong>‘s:1234,1234,1234\r’</strong>单位为毫米。</p>
+<li><p>&#x51C6;&#x5907;&#x4E00;&#x4E2A;uart&#x8BBE;&#x5907;&#xFF0C;&#x80FD;&#x591F;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4F7F;&#x7528;32&#x5F00;&#x53D1;&#x677F;&#x4F5C;&#x4E3A;&#x8F7D;&#x4F53;&#xFF0C;&#x5411;px4&#x53D1;&#x9001;&#x5750;&#x6807;&#x4FE1;&#x606F;&#xFF0C;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x4E3A; <strong>&#x2018;s:1234,1234,1234\r&#x2019;</strong>&#x5355;&#x4F4D;&#x4E3A;&#x6BEB;&#x7C73;&#x3002;</p>
 </li>
-<li><p>开发px4代码<br></p>
+<li><p>&#x5F00;&#x53D1;px4&#x4EE3;&#x7801;<br></p>
 <ol>
-<li><p>定义消息<br><br> 首先在msg的文件夹下创建<code>uart_pos.msg</code>文件，然后在里面自定义数据类型，<br></p>
+<li><p>&#x5B9A;&#x4E49;&#x6D88;&#x606F;<br><br> &#x9996;&#x5148;&#x5728;msg&#x7684;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x521B;&#x5EFA;<code>uart_pos.msg</code>&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x91CC;&#x9762;&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;<br></p>
 <blockquote>
 <p>uint32 id      # ID of the estimator, commonly the component ID of the incoming message<br> int32 int_x    # Z postiton in meters in the NED earth-fixed frame<br> int32 int_y    # Z postiton in meters in the NED earth-fixed frame<br> int32 int_z    # Z postiton in meters in the NED earth-fixed frame </p>
 </blockquote>
 </li>
 </ol>
 <ol start="2">
-<li>CMakeLists.txt中注册<br>在<code>./msg/CMakeLists.txt</code>中注册<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set(msg_files</span><br><span class="line">...</span><br><span class="line">wind_estimate.msg</span><br><span class="line">uart_pos.msg</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>CMakeLists.txt&#x4E2D;&#x6CE8;&#x518C;<br>&#x5728;<code>./msg/CMakeLists.txt</code>&#x4E2D;&#x6CE8;&#x518C;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set(msg_files</span><br><span class="line">...</span><br><span class="line">wind_estimate.msg</span><br><span class="line">uart_pos.msg</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
 </li>
-<li><p>读取uart数据<br><br>在<code>./src/modules</code>中新建文件夹<code>read_uart</code> 在文件夹中添加<code>read_uart.c</code>与<code>CMakelists.txt</code></p>
+<li><p>&#x8BFB;&#x53D6;uart&#x6570;&#x636E;<br><br>&#x5728;<code>./src/modules</code>&#x4E2D;&#x65B0;&#x5EFA;&#x6587;&#x4EF6;&#x5939;<code>read_uart</code> &#x5728;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x6DFB;&#x52A0;<code>read_uart.c</code>&#x4E0E;<code>CMakelists.txt</code></p>
 <ol>
-<li><p><code>read_uart.c</code>内容主要如下：</p>
+<li><p><code>read_uart.c</code>&#x5185;&#x5BB9;&#x4E3B;&#x8981;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ol>
-<li><p>初始化<br>px4使用nuttx操作系统，所以我们不能直接像使用32库的方式来配置uart，nuttx 提供了uart的驱动，我们 只需要取调用就可以了:</p>
-<pre><code>/*初始化串口*/
+<li><p>&#x521D;&#x59CB;&#x5316;<br>px4&#x4F7F;&#x7528;nuttx&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x50CF;&#x4F7F;&#x7528;32&#x5E93;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x914D;&#x7F6E;uart&#xFF0C;nuttx &#x63D0;&#x4F9B;&#x4E86;uart&#x7684;&#x9A71;&#x52A8;&#xFF0C;&#x6211;&#x4EEC; &#x53EA;&#x9700;&#x8981;&#x53D6;&#x8C03;&#x7528;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;:</p>
+<pre><code>/*&#x521D;&#x59CB;&#x5316;&#x4E32;&#x53E3;*/
 int uart_read = uart_init(uart_name);
 if(false == uart_read)return -1;
-/*设置波特率*/
+/*&#x8BBE;&#x7F6E;&#x6CE2;&#x7279;&#x7387;*/
 if(false == set_uart_baudrate(uart_read,115200)){
     printf(&quot;set_uart_baudrate is failed\n&quot;);
     return -1;
 }
 printf(&quot;uart init is successful\n&quot;);</code></pre><ol start="2">
-<li><p>uart_init(uart_name) 返回一个句柄，uart_name 可以在rcS脚本中找到，其中写着uart的具体名称:</p>
+<li><p>uart_init(uart_name) &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53E5;&#x67C4;&#xFF0C;uart_name &#x53EF;&#x4EE5;&#x5728;rcS&#x811A;&#x672C;&#x4E2D;&#x627E;&#x5230;&#xFF0C;&#x5176;&#x4E2D;&#x5199;&#x7740;uart&#x7684;&#x5177;&#x4F53;&#x540D;&#x79F0;:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * TELEM1 : /dev/ttyS1</span><br><span class="line"> * TELEM2 : /dev/ttyS2</span><br><span class="line"> * GPS    : /dev/ttyS3</span><br><span class="line"> * NSH    : /dev/ttyS5</span><br><span class="line"> * SERIAL4: /dev/ttyS6</span><br><span class="line"> * N/A    : /dev/ttyS4</span><br><span class="line"> * IO DEBUG (RX only):/dev/ttyS0</span><br><span class="line"> */</span><br></pre></td></tr></table></figure></li>
-<li><p>读取数据</p>
+<li><p>&#x8BFB;&#x53D6;&#x6570;&#x636E;</p>
 <pre><code>while(!thread_should_exit){
     read(uart_read,&amp;data,1);
     read_uart(data);
- }</code></pre><p>数据保存到data   </p>
+ }</code></pre><p>&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x5230;data   </p>
 </li>
 </ol>
 </li>
-<li><p>数据处理与数据发送<br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">int read_uart(char data)</span><br><span class="line">&#123;</span><br><span class="line">    static int i=0;</span><br><span class="line">    static char rx_buff[48];</span><br><span class="line">    static char  state=0;</span><br><span class="line">    static int  times = 0;</span><br><span class="line">    times ++;</span><br><span class="line">    // int x,y,z;</span><br><span class="line">    if(state ==0 || data == &apos;s&apos;)//数据起始位</span><br><span class="line">    &#123;</span><br><span class="line">        i=0;</span><br><span class="line">        memset(rx_buff,0,sizeof(rx_buff));</span><br><span class="line">        state = 1;</span><br><span class="line">    &#125;else if(state == 1&amp;&amp;data ==&apos;:&apos;)&#123;</span><br><span class="line">        state = 2;</span><br><span class="line">    &#125;else if(state ==2 )&#123;</span><br><span class="line">        if(data == &apos;\r&apos;)//数据结束位</span><br><span class="line">        &#123;</span><br><span class="line">            sscanf(rx_buff,&quot;%d,%d,%d&quot;,&amp;uart_data.int_x,&amp;uart_data.int_y,&amp;uart_data.int_z);</span><br><span class="line">           </span><br><span class="line">            if(times %500 == 0)//发送到控制台</span><br><span class="line">                mavlink_and_console_log_info(&amp;mavlink_uart_pub, &quot;[uart]ok %d %d %d&quot;,uart_data.int_x,uart_data.int_y,uart_data.int_z);</span><br><span class="line">            state = 0;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        rx_buff[i] = data;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    else state = 0;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>&#x6570;&#x636E;&#x5904;&#x7406;&#x4E0E;&#x6570;&#x636E;&#x53D1;&#x9001;<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">int read_uart(char data)</span><br><span class="line">{</span><br><span class="line">    static int i=0;</span><br><span class="line">    static char rx_buff[48];</span><br><span class="line">    static char  state=0;</span><br><span class="line">    static int  times = 0;</span><br><span class="line">    times ++;</span><br><span class="line">    // int x,y,z;</span><br><span class="line">    if(state ==0 || data == &apos;s&apos;)//&#x6570;&#x636E;&#x8D77;&#x59CB;&#x4F4D;</span><br><span class="line">    {</span><br><span class="line">        i=0;</span><br><span class="line">        memset(rx_buff,0,sizeof(rx_buff));</span><br><span class="line">        state = 1;</span><br><span class="line">    }else if(state == 1&amp;&amp;data ==&apos;:&apos;){</span><br><span class="line">        state = 2;</span><br><span class="line">    }else if(state ==2 ){</span><br><span class="line">        if(data == &apos;\r&apos;)//&#x6570;&#x636E;&#x7ED3;&#x675F;&#x4F4D;</span><br><span class="line">        {</span><br><span class="line">            sscanf(rx_buff,&quot;%d,%d,%d&quot;,&amp;uart_data.int_x,&amp;uart_data.int_y,&amp;uart_data.int_z);</span><br><span class="line">           </span><br><span class="line">            if(times %500 == 0)//&#x53D1;&#x9001;&#x5230;&#x63A7;&#x5236;&#x53F0;</span><br><span class="line">                mavlink_and_console_log_info(&amp;mavlink_uart_pub, &quot;[uart]ok %d %d %d&quot;,uart_data.int_x,uart_data.int_y,uart_data.int_z);</span><br><span class="line">            state = 0;</span><br><span class="line">            return 0;</span><br><span class="line">        }</span><br><span class="line">        rx_buff[i] = data;</span><br><span class="line">        i++;</span><br><span class="line">    }</span><br><span class="line">    else state = 0;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
-<li><p>注册到飞控中</p>
+<li><p>&#x6CE8;&#x518C;&#x5230;&#x98DE;&#x63A7;&#x4E2D;</p>
 <ol>
-<li><code>./src/modules/read_uart/CMakelists.txt</code>中：<br>添加</li>
+<li><code>./src/modules/read_uart/CMakelists.txt</code>&#x4E2D;&#xFF1A;<br>&#x6DFB;&#x52A0;</li>
 </ol>
 </li>
 </ol>
 </li>
 </ol>
 <pre><code>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">px4_add_module(</span><br><span class="line">	MODULE modules__read_uart</span><br><span class="line">	MAIN read_uart_sensor</span><br><span class="line">	COMPILE_FLAGS</span><br><span class="line">		-Os</span><br><span class="line">    	SRCS</span><br><span class="line">	        read_uart.c</span><br><span class="line">    	DEPENDS</span><br><span class="line">		platforms__common</span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
- 2. `./cmake/config/nuttx_px4fmu-v2_default.cmake`添加
+ 2. `./cmake/config/nuttx_px4fmu-v2_default.cmake`&#x6DFB;&#x52A0;
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modules/sensors</span><br></pre></td></tr></table></figure></code></pre><ol start="3">
-<li>在控制台输入</li>
+<li>&#x5728;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x5165;</li>
 </ol>
 <blockquote>
 <p>   make px4fmu-v2_default upload    </p>
 </blockquote>
-<p>将生成的固件下载到pix中，然后在qgc的控制台上输入<code>？</code>应该能看到<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctYmxvZy5jc2RuLm5ldC8yMDE4MDMxOTE5NDkwNTgwMz93YXRlcm1hcmsvMi90ZXh0L0x5OWliRzluTG1OelpHNHVibVYwTDB0MWNuVnRhVjluZFhscC9mb250LzVhNkw1TDJUL2ZvbnRzaXplLzQwMC9maWxsL0kwSkJRa0ZDTUE9PS9kaXNzb2x2ZS83MA?x-oss-process=image/format,png" alt="这里写图片描述"><br>这时接着输入<code>read_uart_sensor start /dev/ttyS4</code>（ttyS4是根据你连接的串口，</p>
+<p>&#x5C06;&#x751F;&#x6210;&#x7684;&#x56FA;&#x4EF6;&#x4E0B;&#x8F7D;&#x5230;pix&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x5728;qgc&#x7684;&#x63A7;&#x5236;&#x53F0;&#x4E0A;&#x8F93;&#x5165;<code>&#xFF1F;</code>&#x5E94;&#x8BE5;&#x80FD;&#x770B;&#x5230;<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctYmxvZy5jc2RuLm5ldC8yMDE4MDMxOTE5NDkwNTgwMz93YXRlcm1hcmsvMi90ZXh0L0x5OWliRzluTG1OelpHNHVibVYwTDB0MWNuVnRhVjluZFhscC9mb250LzVhNkw1TDJUL2ZvbnRzaXplLzQwMC9maWxsL0kwSkJRa0ZDTUE9PS9kaXNzb2x2ZS83MA?x-oss-process=image/format,png" alt="&#x8FD9;&#x91CC;&#x5199;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"><br>&#x8FD9;&#x65F6;&#x63A5;&#x7740;&#x8F93;&#x5165;<code>read_uart_sensor start /dev/ttyS4</code>&#xFF08;ttyS4&#x662F;&#x6839;&#x636E;&#x4F60;&#x8FDE;&#x63A5;&#x7684;&#x4E32;&#x53E3;&#xFF0C;</p>
 <ul>
 <li>TELEM1 : /dev/ttyS1<ul>
 <li>TELEM2 : /dev/ttyS2</li>
@@ -247,11 +247,11 @@ printf(&quot;uart init is successful\n&quot;);</code></pre><ol start="2">
 <li>NSH    : /dev/ttyS5</li>
 <li>SERIAL4: /dev/ttyS6</li>
 <li>N/A    : /dev/ttyS4</li>
-<li>IO DEBUG (RX only):/dev/ttyS0）<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctYmxvZy5jc2RuLm5ldC8yMDE4MDMxOTE5NTEwNTU1MT93YXRlcm1hcmsvMi90ZXh0L0x5OWliRzluTG1OelpHNHVibVYwTDB0MWNuVnRhVjluZFhscC9mb250LzVhNkw1TDJUL2ZvbnRzaXplLzQwMC9maWxsL0kwSkJRa0ZDTUE9PS9kaXNzb2x2ZS83MA?x-oss-process=image/format,png" alt="这里写图片描述"><br>这时你应该可以看到数据在通知栏和控制台上</li>
+<li>IO DEBUG (RX only):/dev/ttyS0&#xFF09;<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctYmxvZy5jc2RuLm5ldC8yMDE4MDMxOTE5NTEwNTU1MT93YXRlcm1hcmsvMi90ZXh0L0x5OWliRzluTG1OelpHNHVibVYwTDB0MWNuVnRhVjluZFhscC9mb250LzVhNkw1TDJUL2ZvbnRzaXplLzQwMC9maWxsL0kwSkJRa0ZDTUE9PS9kaXNzb2x2ZS83MA?x-oss-process=image/format,png" alt="&#x8FD9;&#x91CC;&#x5199;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"><br>&#x8FD9;&#x65F6;&#x4F60;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6570;&#x636E;&#x5728;&#x901A;&#x77E5;&#x680F;&#x548C;&#x63A7;&#x5236;&#x53F0;&#x4E0A;</li>
 </ul>
 </li>
 </ul>
-<h3 id="应用到的文件"><a href="#应用到的文件" class="headerlink" title="应用到的文件"></a>应用到的文件</h3><p>[点这里]（<a href="https://download.csdn.net/download/kurumi_guyi/10296141）" target="_blank" rel="noopener">https://download.csdn.net/download/kurumi_guyi/10296141）</a></p>
+<h3 id="&#x5E94;&#x7528;&#x5230;&#x7684;&#x6587;&#x4EF6;"><a href="#&#x5E94;&#x7528;&#x5230;&#x7684;&#x6587;&#x4EF6;" class="headerlink" title="&#x5E94;&#x7528;&#x5230;&#x7684;&#x6587;&#x4EF6;"></a>&#x5E94;&#x7528;&#x5230;&#x7684;&#x6587;&#x4EF6;</h3><p>[&#x70B9;&#x8FD9;&#x91CC;]&#xFF08;<a href="https://download.csdn.net/download/kurumi_guyi/10296141&#xFF09;" target="_blank" rel="noopener">https://download.csdn.net/download/kurumi_guyi/10296141&#xFF09;</a></p>
 
       
 

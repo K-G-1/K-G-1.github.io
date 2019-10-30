@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pixhawk自定义应用 | KG&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自定义应用 工具 qgroundcontrol ubuntu">
+  <meta name="description" content="&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;&amp;#x5E94;&amp;#x7528; &amp;#x5DE5;&amp;#x5177; qgroundcontrol ubuntu">
 <meta name="keywords" content="pixhawk,ubuntu16.04">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pixhawk自定义应用">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;29&#x2F;pixhawk%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%94%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="KG&#39;s blog">
-<meta property="og:description" content="自定义应用 工具 qgroundcontrol ubuntu">
+<meta property="og:description" content="&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;&amp;#x5E94;&amp;#x7528; &amp;#x5DE5;&amp;#x5177; qgroundcontrol ubuntu">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:updated_time" content="2019-10-30T04:40:48.755Z">
 <meta name="twitter:card" content="summary">
@@ -165,65 +165,65 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="自定义应用"><a href="#自定义应用" class="headerlink" title="自定义应用"></a>自定义应用</h1><ul>
-<li>工具 qgroundcontrol ubuntu <a id="more"></a>
-<h2 id="例程-px4-simple-app"><a href="#例程-px4-simple-app" class="headerlink" title="例程 px4_simple_app"></a>例程 px4_simple_app</h2>px4官方代码已经给出了一个例程<br><br>进入Firmware/cmake/configs<br><br>你可以看到px4的cmake配置，我们打开nuttx_px4fmu-v2_default.cmake文件。<br>有许多被’#’注释的内容，我们拉到最下方，可以看到<blockquote>
+        <h1 id="&#x81EA;&#x5B9A;&#x4E49;&#x5E94;&#x7528;"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x5E94;&#x7528;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x5E94;&#x7528;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x5E94;&#x7528;</h1><ul>
+<li>&#x5DE5;&#x5177; qgroundcontrol ubuntu <a id="more"></a>
+<h2 id="&#x4F8B;&#x7A0B;-px4-simple-app"><a href="#&#x4F8B;&#x7A0B;-px4-simple-app" class="headerlink" title="&#x4F8B;&#x7A0B; px4_simple_app"></a>&#x4F8B;&#x7A0B; px4_simple_app</h2>px4&#x5B98;&#x65B9;&#x4EE3;&#x7801;&#x5DF2;&#x7ECF;&#x7ED9;&#x51FA;&#x4E86;&#x4E00;&#x4E2A;&#x4F8B;&#x7A0B;<br><br>&#x8FDB;&#x5165;Firmware/cmake/configs<br><br>&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;px4&#x7684;cmake&#x914D;&#x7F6E;&#xFF0C;&#x6211;&#x4EEC;&#x6253;&#x5F00;nuttx_px4fmu-v2_default.cmake&#x6587;&#x4EF6;&#x3002;<br>&#x6709;&#x8BB8;&#x591A;&#x88AB;&#x2019;#&#x2019;&#x6CE8;&#x91CA;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x62C9;&#x5230;&#x6700;&#x4E0B;&#x65B9;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;<blockquote>
 <p>examples/px4_simple_app</p>
 </blockquote>
 </li>
 </ul>
-<p>取消注释，之后编译下载到px4中，使用qgc连接飞控，在控制台console ，键入px4_simple_app，就可以看到当前的3轴加速度数据。</p>
-<h2 id="自定义数据"><a href="#自定义数据" class="headerlink" title="自定义数据"></a>自定义数据</h2><p>自定义数据显示的话，就需要改动它的数据来源，最后的显示部分不需要改动。<br><strong>px4使用uorb进行数据的交互</strong></p>
+<p>&#x53D6;&#x6D88;&#x6CE8;&#x91CA;&#xFF0C;&#x4E4B;&#x540E;&#x7F16;&#x8BD1;&#x4E0B;&#x8F7D;&#x5230;px4&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;qgc&#x8FDE;&#x63A5;&#x98DE;&#x63A7;&#xFF0C;&#x5728;&#x63A7;&#x5236;&#x53F0;console &#xFF0C;&#x952E;&#x5165;px4_simple_app&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;&#x7684;3&#x8F74;&#x52A0;&#x901F;&#x5EA6;&#x6570;&#x636E;&#x3002;</p>
+<h2 id="&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;</h2><p>&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x663E;&#x793A;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x6539;&#x52A8;&#x5B83;&#x7684;&#x6570;&#x636E;&#x6765;&#x6E90;&#xFF0C;&#x6700;&#x540E;&#x7684;&#x663E;&#x793A;&#x90E8;&#x5206;&#x4E0D;&#x9700;&#x8981;&#x6539;&#x52A8;&#x3002;<br><strong>px4&#x4F7F;&#x7528;uorb&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x4EA4;&#x4E92;</strong></p>
 <ol>
-<li><p>公告主题</p>
+<li><p>&#x516C;&#x544A;&#x4E3B;&#x9898;</p>
 <blockquote>
 <p>orb_advertise(const struct orb_metadata *meta, const void *data); </p>
 </blockquote>
-<p>meta:uORB元对象，可以认为是主题id，一般是通过ORB_ID(主题名)来赋值;<br>data:指向一个已被初始化，发布者要发布的数据存储变量的指针；</p>
+<p>meta:uORB&#x5143;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E3B;&#x9898;id&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;ORB_ID(&#x4E3B;&#x9898;&#x540D;)&#x6765;&#x8D4B;&#x503C;;<br>data:&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x53D1;&#x5E03;&#x8005;&#x8981;&#x53D1;&#x5E03;&#x7684;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x53D8;&#x91CF;&#x7684;&#x6307;&#x9488;&#xFF1B;</p>
 </li>
-<li><p>发布数据</p>
+<li><p>&#x53D1;&#x5E03;&#x6570;&#x636E;</p>
 <blockquote>
 <p>orb_publish(const struct orb_metadata *meta, int handle, const void *data);</p>
 </blockquote>
-<p>meta:uORB元对象，可以认为是主题id，一般是通过ORB_ID(主题名)来赋值;<br>handle:orb_advertise函数返回的句柄；<br>data:指向待发布数据的指针；</p>
+<p>meta:uORB&#x5143;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E3B;&#x9898;id&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;ORB_ID(&#x4E3B;&#x9898;&#x540D;)&#x6765;&#x8D4B;&#x503C;;<br>handle:orb_advertise&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x53E5;&#x67C4;&#xFF1B;<br>data:&#x6307;&#x5411;&#x5F85;&#x53D1;&#x5E03;&#x6570;&#x636E;&#x7684;&#x6307;&#x9488;&#xFF1B;</p>
 </li>
-<li><p>读取数据<br>*订阅</p>
+<li><p>&#x8BFB;&#x53D6;&#x6570;&#x636E;<br>*&#x8BA2;&#x9605;</p>
 <blockquote>
 <p>int orb_subscribe(const struct orb_metadata *meta); </p>
 </blockquote>
-<p>meta:uORB元对象，可以认为是主题id，一般是通过ORB_ID(主题名)来赋值；<br>*读取</p>
+<p>meta:uORB&#x5143;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E3B;&#x9898;id&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;ORB_ID(&#x4E3B;&#x9898;&#x540D;)&#x6765;&#x8D4B;&#x503C;&#xFF1B;<br>*&#x8BFB;&#x53D6;</p>
 <blockquote>
 <p>int orb_copy(const struct orb_metadata *meta, int handle, void *buffer); </p>
 </blockquote>
-<p>meta:uORB元对象，可以认为是主题id，一般是通过ORB_ID(主题名)来赋值<br>handle:订阅主题返回的句柄；<br>buffer:从主题中获取的数据；</p>
+<p>meta:uORB&#x5143;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E3B;&#x9898;id&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;ORB_ID(&#x4E3B;&#x9898;&#x540D;)&#x6765;&#x8D4B;&#x503C;<br>handle:&#x8BA2;&#x9605;&#x4E3B;&#x9898;&#x8FD4;&#x56DE;&#x7684;&#x53E5;&#x67C4;&#xFF1B;<br>buffer:&#x4ECE;&#x4E3B;&#x9898;&#x4E2D;&#x83B7;&#x53D6;&#x7684;&#x6570;&#x636E;&#xFF1B;</p>
 </li>
-<li><p>more<br>检查更新 </p>
+<li><p>more<br>&#x68C0;&#x67E5;&#x66F4;&#x65B0; </p>
 <blockquote>
 <p>int orb_check(int handle, bool *updated);</p>
 </blockquote>
-<p>发布时间戳</p>
+<p>&#x53D1;&#x5E03;&#x65F6;&#x95F4;&#x6233;</p>
 <blockquote>
 <p>int orb_stat(int handle, uint64_t *time);  </p>
 </blockquote>
-<p>监控文件描述符（多个）</p>
+<p>&#x76D1;&#x63A7;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF08;&#x591A;&#x4E2A;&#xFF09;</p>
 <blockquote>
 <p>int poll(struct pollfd fds[], nfds_t nfds, int timeout)</p>
 </blockquote>
-<p>输入： </p>
-<pre><code>fds:struct pollfd结构类型的数组，进程可以同时等待很多个主题数据，当有数据更新时，判断一下是谁
-nfds:用于标记数组fds中的结构体元素的总数量；</code></pre><p>返回值：</p>
-<pre><code>&gt;0：阻塞时间内拿到了数据；
-==0:抱歉时间都用完了，也没能拿到数据;
--1:poll函数调用失败；</code></pre></li>
-<li><p>例子</p>
+<p>&#x8F93;&#x5165;&#xFF1A; </p>
+<pre><code>fds:struct pollfd&#x7ED3;&#x6784;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x7B49;&#x5F85;&#x5F88;&#x591A;&#x4E2A;&#x4E3B;&#x9898;&#x6570;&#x636E;&#xFF0C;&#x5F53;&#x6709;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x4E00;&#x4E0B;&#x662F;&#x8C01;
+nfds:&#x7528;&#x4E8E;&#x6807;&#x8BB0;&#x6570;&#x7EC4;fds&#x4E2D;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x5143;&#x7D20;&#x7684;&#x603B;&#x6570;&#x91CF;&#xFF1B;</code></pre><p>&#x8FD4;&#x56DE;&#x503C;&#xFF1A;</p>
+<pre><code>&gt;0&#xFF1A;&#x963B;&#x585E;&#x65F6;&#x95F4;&#x5185;&#x62FF;&#x5230;&#x4E86;&#x6570;&#x636E;&#xFF1B;
+==0:&#x62B1;&#x6B49;&#x65F6;&#x95F4;&#x90FD;&#x7528;&#x5B8C;&#x4E86;&#xFF0C;&#x4E5F;&#x6CA1;&#x80FD;&#x62FF;&#x5230;&#x6570;&#x636E;;
+-1:poll&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5931;&#x8D25;&#xFF1B;</code></pre></li>
+<li><p>&#x4F8B;&#x5B50;</p>
 </li>
 </ol>
 <p>publish.cpp</p>
-<p>使用px4simple_app.c </p>
-<p>添加#include  &lt; uORB/topics/optical_flow.h&gt;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int simple_thread_main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    struct optical_flow_s flow_data;</span><br><span class="line">    orb_advert_t flow_pub;</span><br><span class="line">    /* 公告主题 */</span><br><span class="line">    flow_pub = orb_advertise(ORB_ID(optical_flow), &amp;flow_data);</span><br><span class="line">    while(!thread_should_exit)&#123;</span><br><span class="line">        usleep(20);</span><br><span class="line"></span><br><span class="line">        flow_data.pixel_flow_x_integral = 1000;</span><br><span class="line">        flow_data.pixel_flow_y_integral = 1000;</span><br><span class="line">        flow_data.ground_distance_m = 1000;</span><br><span class="line">        flow_data.quality = 255;</span><br><span class="line">        ...</span><br><span class="line">        orb_publish(ORB_ID(optical_flow), flow_pub, &amp;flow_data);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;&#125;</span><br></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;px4simple_app.c </p>
+<p>&#x6DFB;&#x52A0;#include  &lt; uORB/topics/optical_flow.h&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int simple_thread_main(int argc, char *argv[])</span><br><span class="line">{</span><br><span class="line">    struct optical_flow_s flow_data;</span><br><span class="line">    orb_advert_t flow_pub;</span><br><span class="line">    /* &#x516C;&#x544A;&#x4E3B;&#x9898; */</span><br><span class="line">    flow_pub = orb_advertise(ORB_ID(optical_flow), &amp;flow_data);</span><br><span class="line">    while(!thread_should_exit){</span><br><span class="line">        usleep(20);</span><br><span class="line"></span><br><span class="line">        flow_data.pixel_flow_x_integral = 1000;</span><br><span class="line">        flow_data.pixel_flow_y_integral = 1000;</span><br><span class="line">        flow_data.ground_distance_m = 1000;</span><br><span class="line">        flow_data.quality = 255;</span><br><span class="line">        ...</span><br><span class="line">        orb_publish(ORB_ID(optical_flow), flow_pub, &amp;flow_data);</span><br><span class="line">    }</span><br><span class="line">    return 0;}</span><br></pre></td></tr></table></figure>
 
-<p>编译代码之后你就可以在qgc上看到optical flow的有数据且数据是你设置的值（前提是你不插光流）</p>
+<p>&#x7F16;&#x8BD1;&#x4EE3;&#x7801;&#x4E4B;&#x540E;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5728;qgc&#x4E0A;&#x770B;&#x5230;optical flow&#x7684;&#x6709;&#x6570;&#x636E;&#x4E14;&#x6570;&#x636E;&#x662F;&#x4F60;&#x8BBE;&#x7F6E;&#x7684;&#x503C;&#xFF08;&#x524D;&#x63D0;&#x662F;&#x4F60;&#x4E0D;&#x63D2;&#x5149;&#x6D41;&#xFF09;</p>
 
       
 
