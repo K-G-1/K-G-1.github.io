@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>cubemx-HAL-freertos与C-工程报错 | KG&#39;s blog</title>
+  <title>cubemx-HAL-freertos与C++工程报错  | KG&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: cubemx+HAL+freertos与C++工程报错date: 2019-10-30 20:30:41tags: [HAL,keil,freertos,C++ ]  使用stm32与C++进行程序编写，根据网络上的教程一开始能进行程序编写，但是我添加freertos发现多个文件报错，经过一番折腾之后终于是解决了这个问题">
+  <meta name="description" content="使用stm32与C++进行程序编写，根据网络上的教程一开始能进行程序编写，但是我添加freertos发现多个文件报错，经过一番折腾之后终于是解决了这个问题">
+<meta name="keywords" content="HAL,keil,freertos,C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cubemx-HAL-freertos与C-工程报错">
+<meta property="og:title" content="cubemx-HAL-freertos与C++工程报错 ">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;cubemx-HAL-freertos%E4%B8%8EC-%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99&#x2F;index.html">
 <meta property="og:site_name" content="KG&#39;s blog">
-<meta property="og:description" content="title: cubemx+HAL+freertos与C++工程报错date: 2019-10-30 20:30:41tags: [HAL,keil,freertos,C++ ]  使用stm32与C++进行程序编写，根据网络上的教程一开始能进行程序编写，但是我添加freertos发现多个文件报错，经过一番折腾之后终于是解决了这个问题">
+<meta property="og:description" content="使用stm32与C++进行程序编写，根据网络上的教程一开始能进行程序编写，但是我添加freertos发现多个文件报错，经过一番折腾之后终于是解决了这个问题">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;cubemx-HAL-freertos%E4%B8%8EC-%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99&#x2F;pic&#x2F;optionforfile.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;cubemx-HAL-freertos%E4%B8%8EC-%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99&#x2F;pic&#x2F;buildout.png">
-<meta property="og:updated_time" content="2019-10-30T13:07:26.153Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;optionforfile.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;buildout.png">
+<meta property="og:updated_time" content="2019-10-30T13:17:13.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;cubemx-HAL-freertos%E4%B8%8EC-%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99&#x2F;pic&#x2F;optionforfile.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;optionforfile.png">
   
     <link rel="alternative" href="/atom.xml" title="KG&#39;s blog" type="application/atom+xml">
   
@@ -154,23 +155,22 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      cubemx-HAL-freertos与C-工程报错
+      cubemx-HAL-freertos与C++工程报错 
     </h1>
   
 
         
         <a href="/2019/10/30/cubemx-HAL-freertos%E4%B8%8EC-%E5%B7%A5%E7%A8%8B%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  	<time datetime="2019-10-30T12:30:41.401Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
+  	<time datetime="2019-10-30T13:15:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: cubemx+HAL+freertos与C++工程报错<br>date: 2019-10-30 20:30:41<br>tags: [HAL,keil,freertos,C++ ]</p>
-<hr>
+        <blockquote>
 <p>使用stm32与C++进行程序编写，根据网络上的教程一开始能进行程序编写，但是我添加freertos发现多个文件报错，经过一番折腾之后终于是解决了这个问题</p>
+</blockquote>
 <a id="more"></a>
 <ol>
 <li><p>出错信息</p>
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
 <li>不要改变option/c/c++中的设置</li>
 <li>右键main.c，在options for file中改变‘file type’，选择‘C++ source file’</li>
 <li>同样改变freertos.c文件</li>
-<li>添加自己的CPP文件（注意后缀）<br><br><br>编译一下，就大功告成了<br><img src="./pic/optionforfile.png" alt="main文件设置"><br><img src="./pic/buildout.png" alt="编译输出"></li>
+<li>添加自己的CPP文件（注意后缀）<br><br><br>编译一下，就大功告成了<br><img src="/.com//optionforfile.png" alt="main文件设置"><br><img src="/.com//buildout.png" alt="编译输出"></li>
 </ol>
 </li>
 </ol>
@@ -196,6 +196,29 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HAL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">keil</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">freertos</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -420,11 +443,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">HAL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">keil</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">freertos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pixhawk</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">commander文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,10 +484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ubuntu16.04</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">commander文件</a>
               </li>
             
             <div class="clearfix"></div>
