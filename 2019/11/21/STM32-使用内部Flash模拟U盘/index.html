@@ -9,7 +9,7 @@
   <title>STM32 使用内部Flash模拟U盘 | KG&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;#x4F7F;&amp;#x7528;STM32F103C8T6&amp;#x7684;FALSH&amp;#x4E0E;USB&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x6A21;&amp;#x62DF;U&amp;#x76D8;&amp;#xFF0C;&amp;#x5E76;&amp;#x4ECB;&amp;#x7ECD;&amp;#x4E00;&amp;#x4E0B;&amp;#x5982;&amp;#x4F55;&amp;#x64CD;&amp;#x4F5C;&amp;#x62F7;&amp;#x8D1D;&amp;#">
-<meta name="keywords" content="STM32，HAL，cubemx，USB">
+<meta name="keywords" content="STM32;HAL;cubemx;USB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STM32 使用内部Flash模拟U盘">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;STM32-%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8Flash%E6%A8%A1%E6%8B%9FU%E7%9B%98&#x2F;index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="&amp;#x4F7F;&amp;#x7528;STM32F103C8T6&amp;#x7684;FALSH&amp;#x4E0E;USB&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x6A21;&amp;#x62DF;U&amp;#x76D8;&amp;#xFF0C;&amp;#x5E76;&amp;#x4ECB;&amp;#x7ECD;&amp;#x4E00;&amp;#x4E0B;&amp;#x5982;&amp;#x4F55;&amp;#x64CD;&amp;#x4F5C;&amp;#x62F7;&amp;#x8D1D;&amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;STM32-%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8Flash%E6%A8%A1%E6%8B%9FU%E7%9B%98&#x2F;MSC_MEDIA.png">
-<meta property="og:updated_time" content="2019-11-21T06:47:34.110Z">
+<meta property="og:updated_time" content="2019-11-21T06:53:18.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;STM32-%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8Flash%E6%A8%A1%E6%8B%9FU%E7%9B%98&#x2F;MSC_MEDIA.png">
   
@@ -167,8 +167,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>&#x4F7F;&#x7528;STM32F103C8T6&#x7684;FALSH&#x4E0E;USB&#x529F;&#x80FD;&#xFF0C;&#x6A21;&#x62DF;U&#x76D8;&#xFF0C;&#x5E76;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#x62F7;&#x8D1D;&#x5230;flash&#x7684;&#x6587;&#x4EF6;&#x3002;
-&lt;!--more--&gt;</code></pre><h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2><p>  &#x672C;&#x4EBA;&#x4F7F;&#x7528;&#x7684;windows10&#xFF0C;cubemx5.2.1&#xFF0C;&#x5355;&#x7247;&#x673A;&#x4E3A;STM32F103C8T6&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4E3A;stlink&#xFF0C;&#x4EE5;&#x53CA;MDK5.28</p>
+        <p>&#x4F7F;&#x7528;STM32F103C8T6&#x7684;FALSH&#x4E0E;USB&#x529F;&#x80FD;&#xFF0C;&#x6A21;&#x62DF;U&#x76D8;&#xFF0C;&#x5E76;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#x62F7;&#x8D1D;&#x5230;flash&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<a id="more"></a>
+<h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2><p>  &#x672C;&#x4EBA;&#x4F7F;&#x7528;&#x7684;windows10&#xFF0C;cubemx5.2.1&#xFF0C;&#x5355;&#x7247;&#x673A;&#x4E3A;STM32F103C8T6&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4E3A;stlink&#xFF0C;&#x4EE5;&#x53CA;MDK5.28</p>
 <h2 id="PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;"><a href="#PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;" class="headerlink" title="PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;"></a>PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;</h2><ul>
 <li>&#x4F7F;&#x7528;cubemx&#x751F;&#x6210;MASS storage&#x5DE5;&#x7A0B;<br>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;<code>MSC_MEDIA_PACKET</code> &#x7531;512&#x6539;&#x4E3A;2048<br><img src="/2019/11/21/STM32-%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8Flash%E6%A8%A1%E6%8B%9FU%E7%9B%98/MSC_MEDIA.png" alt="MSC_MEDIA_PACKET"><br>
 <figure class="highlight plain"><figcaption><span>heap size / minimum stack size```&#x9700;&#x8981;&#x589E;&#x5927;&#xFF0C;![heap stack](STM32-&#x4F7F;&#x7528;&#x5185;&#x90E8;Flash&#x6A21;&#x62DF;U&#x76D8;/heap stack.png)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* &#x4FEE;&#x6539;&#x5E95;&#x5C42;&#x9A71;&#x52A8;```usbd_storage_if.c```&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x5728;&#x5176;&#x4ED6;&#x535A;&#x5BA2;&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#xFF0C;&#xFF08;&#x6211;&#x8FD9;&#x91CC;&#x4E5F;&#x662F;&#x5E94;&#x7528;&#x522B;&#x4EBA;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x7531;&#x4E8E;&#x627E;&#x4E0D;&#x5230;&#x6765;&#x6E90;&#x4E86;&#xFF0C;&#x5728;&#x8FD9;&#x8BF4;&#x58F0;&#x62B1;&#x6B49;&#xFF09;</span><br></pre></td></tr></table></figure>
@@ -421,7 +422,7 @@ BS_FileSysType  54  8   &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x578B;  &apos;
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32，HAL，cubemx，USB</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32;HAL;cubemx;USB</a>
         		</li>
       		
 		</ul>
@@ -652,7 +653,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32，HAL，cubemx，USB</a>
+                <a href="javascript:void(0)" class="js-tag color1">STM32;HAL;cubemx;USB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Freertos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Cubemx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,19 +693,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qgc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">uart</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">commander文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu16.04</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,15 +701,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
+                <a href="javascript:void(0)" class="js-tag color4">qgc</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Freertos</a>
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu16.04</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cubemx</a>
+                <a href="javascript:void(0)" class="js-tag color5">uart</a>
               </li>
             
             <div class="clearfix"></div>

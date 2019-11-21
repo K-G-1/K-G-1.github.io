@@ -165,248 +165,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>&#x4F7F;&#x7528;STM32F103C8T6&#x7684;FALSH&#x4E0E;USB&#x529F;&#x80FD;&#xFF0C;&#x6A21;&#x62DF;U&#x76D8;&#xFF0C;&#x5E76;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#x62F7;&#x8D1D;&#x5230;flash&#x7684;&#x6587;&#x4EF6;&#x3002;
-&lt;!--more--&gt;</code></pre><h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2><p>  &#x672C;&#x4EBA;&#x4F7F;&#x7528;&#x7684;windows10&#xFF0C;cubemx5.2.1&#xFF0C;&#x5355;&#x7247;&#x673A;&#x4E3A;STM32F103C8T6&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4E3A;stlink&#xFF0C;&#x4EE5;&#x53CA;MDK5.28</p>
-<h2 id="PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;"><a href="#PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;" class="headerlink" title="PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;"></a>PC&#x7AEF;&#x8BC6;&#x522B;stm32&#x6A21;&#x62DF;U&#x76D8;</h2><ul>
-<li>&#x4F7F;&#x7528;cubemx&#x751F;&#x6210;MASS storage&#x5DE5;&#x7A0B;<br>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;<code>MSC_MEDIA_PACKET</code> &#x7531;512&#x6539;&#x4E3A;2048<br><img src="/2019/11/21/STM32-%E4%BD%BF%E7%94%A8%E5%86%85%E9%83%A8Flash%E6%A8%A1%E6%8B%9FU%E7%9B%98/MSC_MEDIA.png" alt="MSC_MEDIA_PACKET"><br>
-<figure class="highlight plain"><figcaption><span>heap size / minimum stack size```&#x9700;&#x8981;&#x589E;&#x5927;&#xFF0C;![heap stack](STM32-&#x4F7F;&#x7528;&#x5185;&#x90E8;Flash&#x6A21;&#x62DF;U&#x76D8;/heap stack.png)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* &#x4FEE;&#x6539;&#x5E95;&#x5C42;&#x9A71;&#x52A8;```usbd_storage_if.c```&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x5728;&#x5176;&#x4ED6;&#x535A;&#x5BA2;&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#xFF0C;&#xFF08;&#x6211;&#x8FD9;&#x91CC;&#x4E5F;&#x662F;&#x5E94;&#x7528;&#x522B;&#x4EBA;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x7531;&#x4E8E;&#x627E;&#x4E0D;&#x5230;&#x6765;&#x6E90;&#x4E86;&#xFF0C;&#x5728;&#x8FD9;&#x8BF4;&#x58F0;&#x62B1;&#x6B49;&#xFF09;</span><br></pre></td></tr></table></figure>
-/* USER CODE BEGIN Header */
-/**
-******************************************************************************
-* @file           : usbd_storage_if.c
-* @version        : v2.0_Cube
-* @brief          : Memory management layer.
-******************************************************************************
-* @attention
-*
-* <h2><center>&#xA9; Copyright (c) 2019 STMicroelectronics.
-* All rights reserved.</center></h2>
-*
-* This software component is licensed by ST under Ultimate Liberty license
-* SLA0044, the &quot;License&quot;; You may not use this file except in compliance with
-* the License. You may obtain a copy of the License at:
-*                             www.st.com/SLA0044
-*
-******************************************************************************
-*/
-/* USER CODE END Header */
-
-</li>
-</ul>
-<p>/* Includes &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;*/<br>#include &#x201C;usbd_storage_if.h&#x201D;</p>
-<p>/* USER CODE BEGIN INCLUDE <em>/<br>#define     FLASH_START_ADDR        0x08004000    //<br>#define     FLASH_PAGE_NBR              60       // 60K<br>/</em> USER CODE END INCLUDE */</p>
-<p>/* Private typedef &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2013;<em>/<br>/</em> Private define &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;<em>/<br>/</em> Private macro &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;-*/</p>
-<p>/* USER CODE BEGIN PV <em>/<br>/</em> Private variables &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;*/</p>
-<p>/* USER CODE END PV */</p>
-<p>/** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY</p>
-<ul>
-<li>@brief Usb device.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE</p>
-<ul>
-<li>@brief Usb mass storage device module</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE_Private_TypesDefinitions</p>
-<ul>
-<li>@brief Private types.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>/* USER CODE BEGIN PRIVATE_TYPES */</p>
-<p>/* USER CODE END PRIVATE_TYPES */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE_Private_Defines</p>
-<ul>
-<li>@brief Private defines.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>#define STORAGE_LUN_NBR                  1<br>#define STORAGE_BLK_NBR                  0x10000<br>#define STORAGE_BLK_SIZ                  0x200</p>
-<p>/* USER CODE BEGIN PRIVATE_DEFINES */</p>
-<p>/* USER CODE END PRIVATE_DEFINES */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE_Private_Macros</p>
-<ul>
-<li>@brief Private macros.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>/* USER CODE BEGIN PRIVATE_MACRO */</p>
-<p>/* USER CODE END PRIVATE_MACRO */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE_Private_Variables</p>
-<ul>
-<li>@brief Private variables.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>/* USER CODE BEGIN INQUIRY_DATA_FS <em>/<br>/** USB Mass storage Standard Inquiry Data. */<br>const int8_t STORAGE_Inquirydata_FS[] = {/</em> 36 */</p>
-<p>  /* LUN 0 <em>/<br>  0x00,<br>  0x80,<br>  0x02,<br>  0x02,<br>  (STANDARD_INQUIRY_DATA_LEN - 5),<br>  0x00,<br>  0x00,<br>  0x00,<br>  &#x2018;S&#x2019;, &#x2018;T&#x2019;, &#x2018;M&#x2019;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, /</em> Manufacturer : 8 bytes <em>/<br>  &#x2018;P&#x2019;, &#x2018;r&#x2019;, &#x2018;o&#x2019;, &#x2018;d&#x2019;, &#x2018;u&#x2019;, &#x2018;c&#x2019;, &#x2018;t&#x2019;, &#x2018; &#x2018;, /</em> Product      : 16 Bytes <em>/<br>  &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;, &#x2018; &#x2018;,<br>  &#x2018;0&#x2019;, &#x2018;.&#x2019;, &#x2018;0&#x2019; ,&#x2019;1&#x2019;                      /</em> Version      : 4 Bytes <em>/<br>};<br>/</em> USER CODE END INQUIRY_DATA_FS */</p>
-<p>/* USER CODE BEGIN PRIVATE_VARIABLES */</p>
-<p>/* USER CODE END PRIVATE_VARIABLES */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE_Exported_Variables</p>
-<ul>
-<li>@brief Public variables.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>extern USBD_HandleTypeDef hUsbDeviceFS;</p>
-<p>/* USER CODE BEGIN EXPORTED_VARIABLES */</p>
-<p>/* USER CODE END EXPORTED_VARIABLES */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/** @defgroup USBD_STORAGE_Private_FunctionPrototypes</p>
-<ul>
-<li>@brief Private functions declaration.</li>
-<li>@{</li>
-<li>/</li>
-</ul>
-<p>static int8_t STORAGE_Init_FS(uint8_t lun);<br>static int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size);<br>static int8_t STORAGE_IsReady_FS(uint8_t lun);<br>static int8_t STORAGE_IsWriteProtected_FS(uint8_t lun);<br>static int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len);<br>static int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len);<br>static int8_t STORAGE_GetMaxLun_FS(void);</p>
-<p>/* USER CODE BEGIN PRIVATE_FUNCTIONS_DECLARATION */</p>
-<p>/* USER CODE END PRIVATE_FUNCTIONS_DECLARATION */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>USBD_StorageTypeDef USBD_Storage_Interface_fops_FS =<br>{<br>  STORAGE_Init_FS,<br>  STORAGE_GetCapacity_FS,<br>  STORAGE_IsReady_FS,<br>  STORAGE_IsWriteProtected_FS,<br>  STORAGE_Read_FS,<br>  STORAGE_Write_FS,<br>  STORAGE_GetMaxLun_FS,<br>  (int8_t *)STORAGE_Inquirydata_FS<br>};</p>
-<p>/* Private functions &#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;<em>/<br>/*</em></p>
-<ul>
-<li>@brief  Initializes over USB FS IP</li>
-<li>@param  lun:</li>
-<li>@retval USBD_OK if all operations are OK else USBD_FAIL</li>
-<li>/<br>int8_t STORAGE_Init_FS(uint8_t lun)<br>{<br>/* USER CODE BEGIN 2 <em>/<br>return (USBD_OK);<br>/</em> USER CODE END 2 */<br>}</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>@brief  .</li>
-<li>@param  lun: .</li>
-<li>@param  block_num: .</li>
-<li>@param  block_size: .</li>
-<li>@retval USBD_OK if all operations are OK else USBD_FAIL</li>
-<li>/<br>int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t <em>block_num, uint16_t *block_size)<br>{<br>/</em> USER CODE BEGIN 3 */</li>
-<li>block_num  = FLASH_PAGE_NBR;</li>
-<li>block_size = FLASH_PAGE_SIZE;<br>return (USBD_OK);<br>/* USER CODE END 3 */<br>}</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>@brief  .</li>
-<li>@param  lun: .</li>
-<li>@retval USBD_OK if all operations are OK else USBD_FAIL</li>
-<li>/<br>int8_t STORAGE_IsReady_FS(uint8_t lun)<br>{<br>/* USER CODE BEGIN 4 <em>/<br>return (USBD_OK);<br>/</em> USER CODE END 4 */<br>}</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>@brief  .</li>
-<li>@param  lun: .</li>
-<li>@retval USBD_OK if all operations are OK else USBD_FAIL</li>
-<li>/<br>int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)<br>{<br>/* USER CODE BEGIN 5 <em>/<br>return (USBD_OK);<br>/</em> USER CODE END 5 */<br>}</li>
-</ul>
-<p>/**</p>
-<ul>
-<li><p>@brief  .</p>
-</li>
-<li><p>@param  lun: .</p>
-</li>
-<li><p>@retval USBD_OK if all operations are OK else USBD_FAIL</p>
-</li>
-<li><p>/<br>int8_t STORAGE_Read_FS(uint8_t lun, uint8_t <em>buf, uint32_t blk_addr, uint16_t blk_len)<br>{<br>/</em> USER CODE BEGIN 6 */</p>
-<p> memcpy(buf,(uint8_t <em>)(FLASH_START_ADDR + blk_addr</em>FLASH_PAGE_SIZE),blk_len*FLASH_PAGE_SIZE);<br> return USBD_OK;</p>
-</li>
-</ul>
-<p>  /* USER CODE END 6 */<br>}</p>
-<p>/**</p>
-<ul>
-<li><p>@brief  .</p>
-</li>
-<li><p>@param  lun: .</p>
-</li>
-<li><p>@retval USBD_OK if all operations are OK else USBD_FAIL</p>
-</li>
-<li><p>/<br>int8_t STORAGE_Write_FS(uint8_t lun, uint8_t <em>buf, uint32_t blk_addr, uint16_t blk_len)<br>{<br>/</em> USER CODE BEGIN 7 */</p>
-<p> uint16_t i;<br> HAL_FLASH_Unlock();</p>
-<p> FLASH_EraseInitTypeDef f;<br> f.TypeErase = FLASH_TYPEERASE_PAGES;<br> f.PageAddress = FLASH_START_ADDR + blk_addr*FLASH_PAGE_SIZE ;<br> f.NbPages = blk_len;<br> uint32_t PageError = 0;<br> HAL_FLASHEx_Erase(&amp;f, &amp;PageError);</p>
-<p>for(i=0;i&lt;blk_len<em>FLASH_PAGE_SIZE;i+=4)<br> HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD,FLASH_START_ADDR + blk_addr</em>FLASH_PAGE_SIZE + i , *(uint32_t *)(&amp;buf[i]));</p>
-<p> HAL_FLASH_Lock();<br> return USBD_OK;</p>
-</li>
-</ul>
-<p>  /* USER CODE END 7 */<br>}</p>
-<p>/**</p>
-<ul>
-<li>@brief  .</li>
-<li>@param  None</li>
-<li>@retval .</li>
-<li>/<br>int8_t STORAGE_GetMaxLun_FS(void)<br>{<br>/* USER CODE BEGIN 8 <em>/<br>return (STORAGE_LUN_NBR - 1);<br>/</em> USER CODE END 8 */<br>}</li>
-</ul>
-<p>/* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */</p>
-<p>/* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */</p>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>@}</li>
-<li>/</li>
-</ul>
-<p>/<strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong> (C) COPYRIGHT STMicroelectronics <strong><strong>*END OF FILE</strong></strong>/</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">* &#x7F16;&#x8BD1;&#x4E0B;&#x8F7D;&#x5230;&#x5355;&#x7247;&#x673A;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;USB&#x94FE;&#x63A5;&#x7535;&#x8111;&#xFF0C;&#x4F1A;&#x63D0;&#x793A;&#x683C;&#x5F0F;&#x5316;U&#x76D8;&#xFF0C;&#x56E0;&#x4E3A;&#x521D;&#x59CB;&#x7684;flash&#x6CA1;&#x6709;&#x5206;&#x533A;&#x8868;&#x4E4B;&#x5185;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5168;&#x90FD;&#x662F;0xFF&#x3002;</span><br><span class="line">* &#x6CE8;&#x610F;&#x70B9;&#xFF1A;&#x4E4B;&#x524D;```MSC_MEDIA_PACKET```&#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x5C0F;&#xFF0C;&#x6CA1;&#x80FD;&#x683C;&#x5F0F;&#x5316;&#x6210;&#x529F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## &#x5728;STM32flash&#x4E2D;&#x5BFB;&#x627E;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</span><br><span class="line"></span><br><span class="line">1. &#x4E86;&#x89E3;FAT&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&lt;br&gt;</span><br><span class="line">    &#x5728;&#x7535;&#x8111;&#x683C;&#x5F0F;&#x5316;U&#x76D8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x8BD5;&#x8BD5;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x6211;&#x5F53;&#x65F6;&#x6CA1;&#x6709;&#x683C;&#x5F0F;&#x5316;&#x6210;&#x529F;&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x5185;&#x5BB9;&#x5EFA;&#x7ACB;&#x5728;FAT&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;[FAT&#x767E;&#x5EA6;&#x767E;&#x79D1;](https://baike.baidu.com/item/FAT/267561?fr=aladdin)</span><br><span class="line">    </span><br><span class="line">   * &#x78C1;&#x76D8;&#x7ED3;&#x6784;</span><br><span class="line">	2.	&#x5F15;&#x5BFC;&#x6247;&#x533A;&#xFF08;Boot Sector&#xFF09;&#xFF1A;&#x4F4D;&#x4E8E;&#x7B2C;&#x4E00;&#x4E2A;&#x6247;&#x533A;&#xFF0C;&#x5728;&#x8F6F;&#x76D8;&#x4E0A;&#x5C31;&#x662F;0&#x67F1;&#x9762;&#xFF08;&#x78C1;&#x9053;&#xFF09;0&#x78C1;&#x5934;1&#x6247;&#x533A;&#x3002;</span><br><span class="line">    3.	&#x6587;&#x4EF6;&#x5206;&#x914D;&#x8868;&#xFF08;FAT&#xFF09;&#xFF1A;&#x7D27;&#x63A5;&#x7740;&#x5F15;&#x5BFC;&#x6247;&#x533A;&#x7684;&#x662F;&#x4E24;&#x4E2A;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;FAT&#x8868;&#xFF0C;&#x6BCF;&#x4E2A;FAT&#x8868;&#x5360;&#x7528;9&#x4E2A;&#xFF08;FAT2&#x662F;FAT1 &#x7684; copy&#xFF09;</span><br><span class="line">    4.	&#x6839;&#x76EE;&#x5F55;&#x533A;&#xFF1A; FAT&#x8868;&#x4E4B;&#x540E;&#x662F;&#x6839;&#x76EE;&#x5F55;&#x533A;&#xFF0C;&#x6839;&#x76EE;&#x5F55;&#x533A;&#x957F;&#x5EA6;&#x4E0D;&#x56FA;&#x5B9A;</span><br><span class="line">    5.	&#x6570;&#x636E;&#x533A;&#xFF1A;&#x6839;&#x76EE;&#x5F55;&#x540E;&#x9762;&#x5C31;&#x662F;&#x6570;&#x636E;&#x533A; </span><br><span class="line">	![FAT32&#x78C1;&#x76D8;&#x683C;&#x5F0F;](STM32-&#x4F7F;&#x7528;&#x5185;&#x90E8;Flash&#x6A21;&#x62DF;U&#x76D8;/&#x78C1;&#x76D8;&#x7ED3;&#x6784;.png)</span><br><span class="line">   * &#x5F15;&#x5BFC;&#x6247;&#x533A;&#x683C;&#x5F0F;</span><br></pre></td></tr></table></figure>
-<pre><code>&#x540D;&#x79F0;  &#x5F00;&#x59CB;&#x5B57;&#x8282;    &#x957F;&#x5EA6;  &#x5185;&#x5BB9;  &#x53C2;&#x8003;&#x503C;
-BS_jmpBOOT  0   3   &#x4E00;&#x4E2A;&#x77ED;&#x8DF3;&#x8F6C;&#x6307;&#x4EE4; jmp Label_07c00H
-nop
-BS_OEMName  3   8   &#x5382;&#x5546;&#x540D; &apos;QingFeng&apos;
-BPB_BytesPerSec 11  2   &#x6BCF;&#x6247;&#x533A;&#x5B57;&#x8282;&#x6570;&#xFF08;Bytes/Sector&#xFF09;    0x200
-BPB_SecPerClus  13  1   &#x6BCF;&#x7C07;&#x6247;&#x533A;&#x6570;&#xFF08;Sector/Cluster&#xFF09;   0x1
-BPB_ResvdSecCnt 14  2   Boot&#x8BB0;&#x5F55;&#x5360;&#x7528;&#x591A;&#x5C11;&#x6247;&#x533A;    ox1
-BPB_NumFATs 16  1   &#x5171;&#x6709;&#x591A;&#x5C11;FAT&#x8868;    0x2
-BPB_RootEntCnt  17  2   &#x6839;&#x76EE;&#x5F55;&#x533A;&#x6587;&#x4EF6;&#x6700;&#x5927;&#x6570;   0xE0
-BPB_TotSec16    19  2   &#x6247;&#x533A;&#x603B;&#x6570;    0xB40[2*80*18]
-BPB_Media   21  1   &#x4ECB;&#x8D28;&#x63CF;&#x8FF0;&#x7B26;   0xF0
-BPB_FATSz16 22  2   &#x6BCF;&#x4E2A;FAT&#x8868;&#x6240;&#x5360;&#x6247;&#x533A;&#x6570; 0x9
-BPB_SecPerTrk   24  2   &#x6BCF;&#x78C1;&#x9053;&#x6247;&#x533A;&#x6570;&#xFF08;Sector/track&#xFF09;    0x12
-BPB_NumHeads    26  2   &#x78C1;&#x5934;&#x6570;&#xFF08;&#x9762;&#x6570;&#xFF09; 0x2
-BPB_HiddSec 28  4   &#x9690;&#x85CF;&#x6247;&#x533A;&#x6570;   0
-BPB_TotSec32    32  4   &#x5982;&#x679C;BPB_TotSec16=0,&#x5219;&#x7531;&#x8FD9;&#x91CC;&#x7ED9;&#x51FA;&#x6247;&#x533A;&#x6570;  0
-BS_DrvNum   36  1   INT 13H&#x7684;&#x9A71;&#x52A8;&#x5668;&#x53F7;    0
-BS_Reserved1    37  1   &#x4FDD;&#x7559;&#xFF0C;&#x672A;&#x4F7F;&#x7528;  0
-BS_BootSig  38  1   &#x6269;&#x5C55;&#x5F15;&#x5BFC;&#x6807;&#x8BB0;(29h) 0x29
-BS_VolID    39  4   &#x5377;&#x5E8F;&#x5217;&#x53F7;    0
-BS_VolLab   43  11  &#x5377;&#x6807;  &apos;QingFeng&apos;
-BS_FileSysType  54  8   &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x578B;  &apos;FAT12&apos;
-&#x5F15;&#x5BFC;&#x4EE3;&#x7801;&#x53CA;&#x5176;&#x4ED6;&#x5185;&#x5BB9;   62  448 &#x5F15;&#x5BFC;&#x4EE3;&#x7801;&#x53CA;&#x5176;&#x4ED6;&#x6570;&#x636E;   &#x5F15;&#x5BFC;&#x4EE3;&#x7801;&#xFF08;&#x5269;&#x4F59;&#x7A7A;&#x95F4;&#x7528;0&#x586B;&#x5145;&#xFF09;
-&#x7ED3;&#x675F;&#x6807;&#x5FD7;0xAA55  510 2   &#x7B2C;510&#x5B57;&#x8282;&#x4E3A;0x55&#xFF0C;&#x7B2C;511&#x5B57;&#x8282;&#x4E3A;0xAA 0xAA55
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* FAT&#x9879;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x5927;&#x4E8E;&#x4E00;&#x4E2A;&#x6247;&#x533A;&#x65F6;&#xFF0C;FAT&#x9879;&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x5B83;&#x6307;&#x5411;&#x6587;&#x4EF6;&#x63A5;&#x4E0B;&#x6765;&#x653E;&#x7F6E;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</span><br><span class="line">   </span><br><span class="line">   FAT&#x9879;&#x662F;12&#x4F4D;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x81EA;&#x884C;&#x8F6C;&#x6362;&#x4E00;&#x4E0B;&#xFF0C;&#x5728;&#x6839;&#x76EE;&#x5F55;&#x533A;&#x627E;&#x5230;&#x6587;&#x4EF6;&#x521D;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x521D;&#x59CB;&#x7C07;&#xFF0C;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;FAT&#x9879;&#xFF0C;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;0xFF8&#xFF0C;&#x4EE3;&#x8868;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x4E0B;&#x4E00;&#x4E2A;&#x7C07;&#xFF0C;&#x7B49;&#x4E8E;0xFF7&#xFF0C;&#x8BF4;&#x660E;&#x574F;&#x7C07;&#xFF0C;&#x5176;&#x4F59;&#x6570;&#x503C;&#x4EE3;&#x8868;&#x7684;&#x662F;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x7C07;</span><br><span class="line">   </span><br><span class="line">* &#x6839;&#x76EE;&#x5F55;&#x533A;</span><br><span class="line">* &#x6839;&#x636E;&#x6587;&#x6863;&#x4EE5;&#x53CA;&#x8D44;&#x6599;&#xFF0C;&#x7B2C;19&#x4E2A;&#x6247;&#x533A;&#x662F;&#x6839;&#x76EE;&#x5F55;&#x533A;&#xFF0C;**&#x4F46;&#x662F;**&#x6211;&#x5728;flash&#x4E2D;&#x89C2;&#x5BDF;&#x662F;&#x7B2C;3&#x4E2A;&#x6247;&#x533A;&#xFF0C;&#xFF08;&#x83AB;&#x540D;&#x5176;&#x5999;&#xFF09;&#xFF0C;&#x6839;&#x76EE;&#x5F55;&#x533A;&#x7684;&#x5927;&#x5C0F;&#x7531;```BPB_RootEntCnt```&#x51B3;&#x5B9A;&#xFF0C;```Rootsize = BPB_RootEntCnt * 32</span><br></pre></td></tr></table></figure>
-* &#x6839;&#x76EE;&#x5F55;&#x533A;&#x6BCF;&#x4E2A;&#x6761;&#x76EE;&#x4E3A;32&#x5B57;&#x8282;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x683C;&#x5F0F;&#xFF0C;&#x8D77;&#x59CB;&#x7C07;&#x53F7;&#x4EE5;&#x53CA;&#x5927;&#x5C0F;
-![&#x6839;&#x6587;&#x4EF6;&#x533A;&#x683C;&#x5F0F;](STM32-&#x4F7F;&#x7528;&#x5185;&#x90E8;Flash&#x6A21;&#x62DF;U&#x76D8;/&#x6839;&#x76EE;&#x5F55;.png)</code></pre><ul>
-<li><p>&#x6570;&#x636E;&#x533A;</p>
-<pre><code>**&#x6570;&#x636E;&#x533A;&#x662F;&#x4ECE;&#x7C07;2&#x5F00;&#x59CB;**&#xFF0C;&#x6240;&#x4EE5;&#x6839;&#x76EE;&#x5F55;&#x4E2D;&#x8BFB;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x5F00;&#x59CB;&#x7C07;&#x53F7;&#x9700;&#x8981;&#x51CF;2&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x624D;&#x662F;&#x6570;&#x636E;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF0C;```data_add = data_area_add + (DIR_fst_clus -2 ) * BPB_SecPerClus *BPB_BytesPerSec  ```  </code></pre></li>
-</ul>
-
+        <p>&#x4F7F;&#x7528;STM32F103C8T6&#x7684;FALSH&#x4E0E;USB&#x529F;&#x80FD;&#xFF0C;&#x6A21;&#x62DF;U&#x76D8;&#xFF0C;&#x5E76;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x64CD;&#x4F5C;&#x62F7;&#x8D1D;&#x5230;flash&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+        
       
 
       
@@ -419,7 +179,7 @@ BS_FileSysType  54  8   &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x578B;  &apos;
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32，HAL，cubemx，USB</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">STM32;HAL;cubemx;USB</a>
         		</li>
       		
 		</ul>
@@ -1197,7 +957,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32，HAL，cubemx，USB</a>
+                <a href="javascript:void(0)" class="js-tag color1">STM32;HAL;cubemx;USB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Freertos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Cubemx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,19 +997,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qgc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">uart</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">commander文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu16.04</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,15 +1005,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">STM32</a>
+                <a href="javascript:void(0)" class="js-tag color4">qgc</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Freertos</a>
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu16.04</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Cubemx</a>
+                <a href="javascript:void(0)" class="js-tag color5">uart</a>
               </li>
             
             <div class="clearfix"></div>
